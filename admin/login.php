@@ -1,7 +1,7 @@
 
 <?php
-require "../includes/header.php";
-
+include "header.php";
+session_start();
 if(isset($_POST['submit'])) /* Test de la variable */
 {
     $login = $_POST['login'];
@@ -49,3 +49,5 @@ if(isset($_POST['submit'])) /* Test de la variable */
     </div>
 
 </div>
+
+<?php include "footer.php"; ?>
