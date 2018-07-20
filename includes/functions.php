@@ -24,4 +24,11 @@ function viewTarif($id_f){
     $req->execute();
     return $req->fetchAll();
 }
+
+function viewAgenceInfos(){
+    global $bdd;
+    $req = $bdd->prepare("SELECT * FROM agence");
+    $req->execute();
+    return $req->fetch();
+}
 ?>

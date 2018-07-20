@@ -17,12 +17,12 @@
 
                 <!-- footer follow -->
                 <ul class="footer-follow">
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                    <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                    <li><a href="https://www.facebook.com/AvonSquash/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                  <!--  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li> -->
+                    <li><a href="https://www.instagram.com/avonsquash/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+              <!--      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="#"><i class="fa fa-youtube"></i></a></li> -->
                 </ul>
                 <!-- /footer follow -->
 

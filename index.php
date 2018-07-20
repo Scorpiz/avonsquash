@@ -18,7 +18,7 @@ include "includes/functions.php";
             <div class="navbar-header">
                 <!-- Logo -->
                 <div class="navbar-brand">
-                    <a href="index.html">
+                    <a href="index.php">
                         <img class="logo" src="http://avonsquash.com/wp-content/uploads/2018/01/cropped-Squash-Logo.jpg" alt="logo">
                         <img class="logo-alt" src="http://avonsquash.com/wp-content/uploads/2018/01/cropped-Squash-Logo.jpg" alt="logo">
                     </a>
@@ -35,11 +35,11 @@ include "includes/functions.php";
             <!--  Main navigation  -->
             <ul class="main-nav nav navbar-nav navbar-right">
                 <li><a href="#home">Accueil</a></li>
-                <li><a href="#about">News</a></li>
-                <li><a href="#portfolio">Tarifs</a></li>
-                <li><a href="#service">Contact</a></li>
-                <li><a href="#pricing">Réservez</a></li>
-                <li><a href="#pricing">Espace pro</a></li>
+                <li><a href="#blog">News</a></li>
+                <li><a href="#pricing">Tarifs</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="https://resa-avonsquash.deciplus.pro/">Réservez</a></li>
+                <li><a href="#">Espace pro</a></li>
             </ul>
             <!-- /Main navigation -->
 
@@ -67,7 +67,54 @@ include "includes/functions.php";
 
 </header>
 <!-- /Header -->
+    
+<!-- Blog -->
+<div id="blog" class="section md-padding bg-grey">
 
+    <!-- Container -->
+    <div class="container">
+
+        <!-- Row -->
+        <div class="row">
+
+            <!-- Section header -->
+            <div class="section-header text-center">
+                <h2 class="title">News récentes</h2>
+            </div>
+            <!-- /Section header -->
+
+            <!-- blog -->
+            <div class="col-md-4">
+                <div class="blog">
+
+                </div>
+            </div>
+            <!-- /blog -->
+
+            <!-- blog -->
+            <div class="col-md-4">
+                <div class="blog">
+
+                </div>
+            </div>
+            <!-- /blog -->
+
+            <!-- blog -->
+            <div class="col-md-4">
+                <div class="blog">
+
+                </div>
+            </div>
+            <!-- /blog -->
+
+        </div>
+        <!-- /Row -->
+
+    </div>
+    <!-- /Container -->
+
+</div>
+<!-- /Blog -->
 <!-- Tarif -->
 
 <div id="pricing" class="section md-padding">
@@ -150,88 +197,6 @@ include "includes/functions.php";
 </div>
 
 <!-- /Tarif -->
-
-
-<!-- Testimonial -->
-<div id="testimonial" class="section md-padding">
-
-    <!-- Background Image -->
-    <div class="bg-img" style="background-image: url('assets/img/background3.jpg');">
-        <div class="overlay"></div>
-    </div>
-    <!-- /Background Image -->
-
-    <!-- Container -->
-    <div class="container">
-
-        <!-- Row -->
-        <div class="row">
-
-            <div class="carousel">
-                <div><img src="assets/img/80x80.jpg" alt=""></div>
-                <div><img src="assets/img/80x80.jpg" alt=""></div>
-                <div><img src="assets/img/80x80.jpg" alt=""></div>
-                <div><img src="assets/img/80x80.jpg" alt=""></div>
-                <div><img src="assets/img/80x80.jpg" alt=""></div>
-            </div>
-
-        </div>
-        <!-- /Row -->
-
-    </div>
-    <!-- /Container -->
-
-</div>
-<!-- /Testimonial -->
-
-<!-- Blog -->
-<div id="blog" class="section md-padding bg-grey">
-
-    <!-- Container -->
-    <div class="container">
-
-        <!-- Row -->
-        <div class="row">
-
-            <!-- Section header -->
-            <div class="section-header text-center">
-                <h2 class="title">News récentes</h2>
-            </div>
-            <!-- /Section header -->
-
-            <!-- blog -->
-            <div class="col-md-4">
-                <div class="blog">
-
-                </div>
-            </div>
-            <!-- /blog -->
-
-            <!-- blog -->
-            <div class="col-md-4">
-                <div class="blog">
-
-                </div>
-            </div>
-            <!-- /blog -->
-
-            <!-- blog -->
-            <div class="col-md-4">
-                <div class="blog">
-
-                </div>
-            </div>
-            <!-- /blog -->
-
-        </div>
-        <!-- /Row -->
-
-    </div>
-    <!-- /Container -->
-
-</div>
-<!-- /Blog -->
-
 <!-- Contact -->
 <div id="contact" class="section md-padding">
 
@@ -246,13 +211,16 @@ include "includes/functions.php";
                 <h2 class="title">Nous contacter</h2>
             </div>
             <!-- /Section-header -->
-
+<?php $infos = viewAgenceInfos();
+            
+            ?>
+            
             <!-- contact -->
             <div class="col-sm-4">
                 <div class="contact">
                     <i class="fa fa-phone"></i>
                     <h3>Téléphone</h3>
-                    <p>06.08.52.59.85</p>
+                    <p><?= $infos['telephone'] ?></p>
                 </div>
             </div>
             <!-- /contact -->
@@ -262,7 +230,7 @@ include "includes/functions.php";
                 <div class="contact">
                     <i class="fa fa-envelope"></i>
                     <h3>Email</h3>
-                    <p>email@support.com</p>
+                    <p><?= $infos['email'] ?></p>
                 </div>
             </div>
             <!-- /contact -->
@@ -272,7 +240,7 @@ include "includes/functions.php";
                 <div class="contact">
                     <i class="fa fa-map-marker"></i>
                     <h3>Adresse</h3>
-                    <p>24 de rue Charles de Gaulle</p>
+                    <p><?= $infos['numero']." ".$infos['rue']."<br>".$infos['cp']." ".$infos['ville'] ?></p>
                 </div>
             </div>
             <!-- /contact -->
