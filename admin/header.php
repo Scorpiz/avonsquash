@@ -34,11 +34,7 @@ die ("Erreur de la connexion à la bdd");
     <!-- Font Awesome Icon -->
     <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
 
-    <!-- Slick carousel -->
-    <link rel="stylesheet" type="text/css" href="../assets/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="../assets/slick/slick-theme.css"/>
-
-    <!-- Custom stlylesheet -->
+    <!-- Custom stylesheet -->
     <link type="text/css" rel="stylesheet" href="../assets/css/style.css" />
 
 

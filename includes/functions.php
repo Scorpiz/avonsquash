@@ -18,9 +18,9 @@ function viewFormule(){
     return $req->fetchAll();
 }
 
-function viewTarif($id_f){
+function viewTarif($id_f, $deletable){
     global $bdd;
-    $req = $bdd->prepare("SELECT * FROM tarif t, statut s WHERE t.id_s = s.id_s AND  t.id_f = '".$id_f."' ORDER BY libelle_s");
+    $req = $bdd->prepare("SELECT * FROM tarif t, statut s WHERE t.id_s = s.id_s AND  t.id_f = '".$id_f."' AND can_be_deleted = '".$deletable."' ORDER BY libelle_s");
     $req->execute();
     return $req->fetchAll();
 }

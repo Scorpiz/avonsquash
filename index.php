@@ -6,7 +6,7 @@ include "includes/functions.php";
 <!-- Header -->
 <header id="home">
     <!-- Background Image -->
-    <div class="bg-img" style="background-image: url('http://avonsquash.com/wp-content/uploads/2017/09/cropped-ball_court_background.jpg');">
+    <div class="bg-img">
         <div class="overlay"></div>
     </div>
     <!-- /Background Image -->
@@ -144,7 +144,7 @@ include "includes/functions.php";
             </div>
             <?php $formules = viewFormule();
             foreach ($formules as $key=>$formule) {
-                $tarifs = viewTarif($formule['id_f']); ?>
+                $tarifs = viewTarif($formule['id_f'], 1); ?>
                 <div class="col-sm-6">
                     <div class="pricing">
                         <div class="price-head">
@@ -234,6 +234,7 @@ include "includes/functions.php";
                 </div>
             </div>
             <!-- /contact -->
+
 
             <!-- contact -->
             <div class="col-sm-4">

@@ -4,7 +4,7 @@ session_start();
 
 try //Connexion à la bdd
 {
-    $bdd = new PDO("mysql:host=localhost;dbname=avon","root","");
+    $bdd = new PDO("mysql:host=localhost;dbname=avon;charset=UTF8","root","");
 }
 catch(Exception $e)
 {
@@ -51,4 +51,5 @@ catch(Exception $e)
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
 </head>
