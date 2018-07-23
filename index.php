@@ -37,9 +37,9 @@ include "includes/functions.php";
                 <li><a href="#home">Accueil</a></li>
                 <li><a href="#blog">News</a></li>
                 <li><a href="#pricing">Tarifs</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="https://resa-avonsquash.deciplus.pro/">Réservez</a></li>
                 <li><a href="#">Espace pro</a></li>
+                <li><a href="https://resa-avonsquash.deciplus.pro/">Réservez</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
             <!-- /Main navigation -->
 
@@ -69,7 +69,7 @@ include "includes/functions.php";
 <!-- /Header -->
     
 <!-- Blog -->
-<div id="blog" class="section md-padding bg-grey">
+<div id="blog" class="section md-padding">
 
     <!-- Container -->
     <div class="container">
@@ -117,7 +117,7 @@ include "includes/functions.php";
 <!-- /Blog -->
 <!-- Tarif -->
 
-<div id="pricing" class="section md-padding">
+<div id="pricing" class="section md-padding bg-grey">
 
     <!-- Container -->
     <div class="container">
@@ -247,7 +247,7 @@ include "includes/functions.php";
 
             <!-- contact form -->
             <div class="col-md-8 col-md-offset-2">
-                <form class="contact-form">
+                <form class="contact-form" method="get" action="mailto:<?= $infos['email'] ?>">
                     <input type="text" class="input" placeholder="Nom">
                     <input type="email" class="input" placeholder="Email">
                     <input type="text" class="input" placeholder="Sujet">
