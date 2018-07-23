@@ -1,41 +1,20 @@
-
 $(document).ready(function(){
-    $('.carousel').slick({
-        dots: true,
-        infinite: false,
-        adaptiveHeight: true,
-        speed: 300,
-        slidesToShow: 3,
-        slidesToScroll: 4,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-            // You can unslick at a given breakpoint now by adding:
-            // settings: "unslick"
-            // instead of a settings object
-        ]
-    });
+    var header = $('.bg-img');
+
+    var backgrounds = new Array(
+        'url(assets/img/background/cat1.jpg)'
+        , 'url(assets/img/background/cat2.jpg)'
+        , 'url(assets/img/background/cat3.jpg)'
+    );
+
+    var current = 0;
+
+    function nextBackground() {
+        current++;
+        current = current % backgrounds.length;
+        header.css('background-image', backgrounds[current]);
+    }
+    setInterval(nextBackground, 10000);
+
+    header.css('background-image', backgrounds[0]);
 });
-
-
