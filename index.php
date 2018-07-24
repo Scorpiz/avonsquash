@@ -115,7 +115,7 @@ include "includes/functions.php";
 
 </div>
 <!-- /Blog -->
-<!-- Tarif -->
+<!-- Tarifs -->
 
 <div id="pricing" class="section md-padding bg-grey">
 
@@ -131,62 +131,55 @@ include "includes/functions.php";
             </div>
             <!-- /Section header -->
 
-            <!-- pricing -->
+            <!-- tarif -->
+            <?php $formules = viewFormule(0);
+            foreach ($formules as $key=>$formule) {
+                $tarifs = viewTarif($formule['id_f']); ?>
             <div class="col-sm-12">
                 <div class="pricing">
+                    <div class="price-head">
+                        <?php if(!empty($formule['titre'] && $formule['sous_titre'])){ ?>
+                        <span class="price-title"><?= $formule['titre'] ?></span>
+                        <p class="subtitle"><?= $formule['sous_titre'] ?></p>
+                    <?php } ?>
+                    </div>
+                    <?php foreach ($tarifs as $keyTarif=>$tarif) {?>
                     <ul class="price-content">
                         <li>
-                            <p class="description">Frais d'inscription annuels</p><p class="price-amount">30 €</p>
-                            <p class="comment">(comprend frais de dossier + inscription à l'association PFA Squash + Adhésion FFSquash)</p>
+                            <p class="description"><?= $tarif['libelle_ta'] ?></p>
+                            <p class="price-amount"><?= $tarif['prix'] ?> €</p>
+                            <p class="comment"><?= $tarif['commentaire'] ?></p>
                         </li>
                     </ul>
+                    <?php } ?>
                 </div>
             </div>
-            <?php $formules = viewFormule();
-            foreach ($formules as $key=>$formule) {
-                $tarifs = viewTarif($formule['id_f'], 1); ?>
+                <?php } ?>
+
+            <?php $formules0 = viewFormule(1);
+            foreach ($formules0 as $key=>$formule0) {
+                $tarifs0 = viewTarif($formule0['id_f'], 1); ?>
                 <div class="col-sm-6">
                     <div class="pricing">
                         <div class="price-head">
-                            <span class="price-title"><?= $formule['titre'] ?></span>
-                            <p class="subtitle"><?= $formule['sous_titre'] ?></p>
+                            <span class="price-title"><?= $formule0['titre'] ?></span>
+                            <p class="subtitle"><?= $formule0['sous_titre'] ?></p>
                         </div>
-                        <?php foreach ($tarifs as $keyTarif=>$tarif) {?>
+                        <?php foreach ($tarifs0 as $keyTarif=>$tarif0) {?>
                             <ul class="price-content">
-                                <h2 class="title-status"><?= $tarif['libelle_s'] ?></h2>
+                                <h2 class="title-status"><?= $tarif0['libelle_s'] ?></h2>
                                 <li>
-                                    <p class="description"><?= $tarif['libelle_ta'] ?></p>
-                                    <p class="price-amount"><?= $tarif['prix'] ?> €</p>
-                                    <p class="comment"><?= $tarif['commentaire'] ?></p>
+                                    <p class="description"><?= $tarif0['libelle_ta'] ?></p>
+                                    <p class="price-amount"><?= $tarif0['prix'] ?> €</p>
+                                    <p class="comment"><?= $tarif0['commentaire'] ?></p>
                                 </li>
                             </ul>
                         <?php } ?>
                     </div>
                 </div>
             <?php } ?>
-            <!-- /pricing -->
+            <!-- /tarif -->
 
-            <div class="col-sm-12">
-                <div class="pricing">
-                    <div class="price-head">
-                        <span class="price-title">Ecole des jeunes</span>
-                        <p class="subtitle">(du 15/09 au 31/08 - hors vacances scolaires)</p>
-                    </div>
-                    <ul class="price-content">
-                        <h2 class="title-status"></h2>
-                        <li>
-                            <p class="description">Ecole des jeunes (8 à 18 ans)</p><p class="price-amount">215 €</p>
-                            <p class="comment"></p>
-                        </li>
-                        <li>
-                            <p class="description">Mini Squash</p><p class="price-amount">160 €</p>
-                            <p class="comment"></p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- /pricing -->
 
         </div>
         <!-- Row -->
@@ -196,7 +189,7 @@ include "includes/functions.php";
 
 </div>
 
-<!-- /Tarif -->
+<!-- /Tarifs -->
 <!-- Contact -->
 <div id="contact" class="section md-padding">
 
