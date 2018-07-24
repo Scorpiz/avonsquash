@@ -46,7 +46,8 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
 				                <tr>
 				                  <th>Email</th>
 				                  <th>Téléphone</th>
-				                  <th>Adresse</th>   
+				                  <th>Adresse</th>
+                                    <th>Lien carte web</th>
 				                </tr>
 				              </thead>
 				              <tbody>
@@ -54,6 +55,7 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
 				                  <td><?= $infos['email'] ?></td>
 				                  <td><?= $infos['telephone'] ?></td>
 				                  <td><?= $infos['numero']." ".$infos['rue']."<br>".$infos['cp']." ".$infos['ville'] ?></td>
+                                    <td><?= $infos['lien_map'] ?></td>
                                   </tr>
                                         </tbody>
 				                    </table>
