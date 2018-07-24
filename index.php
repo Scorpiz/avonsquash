@@ -204,9 +204,7 @@ include "includes/functions.php";
                 <h2 class="title">Nous contacter</h2>
             </div>
             <!-- /Section-header -->
-<?php $infos = viewAgenceInfos();
-            
-            ?>
+            <?php $infos = viewAgenceInfos(); ?>
             
             <!-- contact -->
             <div class="col-sm-4">
