@@ -230,9 +230,11 @@ include "includes/functions.php";
             <!-- contact -->
             <div class="col-sm-4">
                 <div class="contact">
+                   <a href="<?= $infos['lien_map']?>"> 
                     <i class="fa fa-map-marker"></i>
                     <h3>Adresse</h3>
                     <p><?= $infos['numero']." ".$infos['rue']."<br>".$infos['cp']." ".$infos['ville'] ?></p>
+                    </a>
                 </div>
             </div>
             <!-- /contact -->

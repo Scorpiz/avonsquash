@@ -1,3 +1,19 @@
+<<<<<<< HEAD
+<?php 
+    require "includes/functions.php";
+
+
+try //Connexion à la bdd
+{
+    $bdd = new PDO("mysql:host=localhost;dbname=avon;charset=UTF8","root","");
+}
+catch(Exception $e)
+{
+    die ("Erreur de la connexion à la bdd");
+}
+
+?>
+=======
 <?php
 
 try //Connexion à la bdd
@@ -11,6 +27,7 @@ die ("Erreur de la connexion à la bdd");
 
 ?>
 
+>>>>>>> 08c1a7b473d3b434690b014d6d31a2fee7bd4fb4
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,12 +91,12 @@ die ("Erreur de la connexion à la bdd");
             <div class="sidebar content-box" style="display: block;">
                 <ul class="nav">
                     <!-- Main menu -->
-                    <li class="current"><a href="index.html"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
-                    <li><a href="calendar.html"><i class="glyphicon glyphicon-calendar"></i> Calendar</a></li>
-                    <li><a href="stats.html"><i class="glyphicon glyphicon-stats"></i> Statistics (Charts)</a></li>
-                    <li><a href="tables.html"><i class="glyphicon glyphicon-list"></i> Tables</a></li>
-                    <li><a href="buttons.html"><i class="glyphicon glyphicon-record"></i> Buttons</a></li>
-                    <li><a href="editors.html"><i class="glyphicon glyphicon-pencil"></i> Editors</a></li>
+                    <li class="current"><a href="admin.php"><i class="glyphicon glyphicon-home"></i>Accueil / Info Agence</a></li>
+                    <li><a href="calendar.html"><i class="glyphicon glyphicon-calendar"></i> Tarifs</a></li>
+                    <li><a href="stats.html"><i class="glyphicon glyphicon-stats"></i>Espace Pro</a></li>
+                    <li><a href="tables.html"><i class="glyphicon glyphicon-list"></i>Espace Partenaire</a></li>
+                    <li><a href="buttons.html"><i class="glyphicon glyphicon-record"></i>Admin</a></li>
+                  <!--  <li><a href="editors.html"><i class="glyphicon glyphicon-pencil"></i> Editors</a></li>
                     <li><a href="forms.html"><i class="glyphicon glyphicon-tasks"></i> Forms</a></li>
                     <li class="submenu">
                         <a href="#">
@@ -87,11 +104,11 @@ die ("Erreur de la connexion à la bdd");
                             <span class="caret pull-right"></span>
                         </a>
                         <!-- Sub menu -->
-                        <ul>
+            <!--           <ul>
                             <li><a href="login.html">Login</a></li>
                             <li><a href="signup.html">Signup</a></li>
                         </ul>
                     </li>
-                </ul>
+                </ul> -->
             </div>
         </div>
