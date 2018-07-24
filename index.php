@@ -57,14 +57,14 @@ include "includes/functions.php";
                     <div class="home-content">
                         <h1 class="white-text">SQUASH & MORE</h1>
                         <p class="white-text">Le plus australien des clubs de squash français.</p>
-
                     </div>
                     <!-- /home content -->
+                    
                 </div>
             </div>
         </div>
         <!-- /home wrapper -->
-
+    </div>
 </header>
 <!-- /Header -->
     
