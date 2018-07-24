@@ -31,4 +31,11 @@ function viewAgenceInfos(){
     $req->execute();
     return $req->fetch();
 }
+
+function viewhoraire(){
+    global $bdd;
+    $req = $bdd->prepare("SELECT * FROM date,horaire WHERE date.id_d = horaire.id_d");
+    $req->execute();
+    return $req->fetchAll();
+}
 ?>

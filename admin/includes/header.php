@@ -1,7 +1,6 @@
 <?php
     require "includes/functions.php";
 
-
 try //Connexion à la bdd
 {
     $bdd = new PDO("mysql:host=localhost;dbname=avon;charset=UTF8","root","");

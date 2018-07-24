@@ -55,8 +55,14 @@ include "includes/functions.php";
                 <!-- home content -->
                 <div class="col-md-10 col-md-offset-1">
                     <div class="home-content">
-                        <h1 class="white-text">SQUASH & MORE</h1>
-                        <p class="white-text">Le plus australien des clubs de squash français.</p>
+                        <h1 class="main-color">SQUASH & MORE</h1>
+                        <p class="white-text">Le plus australien des clubs de squash français.</p><br>
+                        <h3 class="main-color">Horaires d'ouverture</h3>
+                        <?php $horaires = viewhoraire();
+                                foreach ($horaires as $key=>$horaire) {
+                                    ?>
+                                    <p class="white-text"> <?= $horaire['jour']." ". $horaire['heure'] ?></p>
+                                <?php } ?>
                     </div>
                     <!-- /home content -->
                     
