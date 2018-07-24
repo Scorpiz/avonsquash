@@ -10,74 +10,11 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
         $rue = htmlspecialchars($_POST['rue']);
         $cp = htmlspecialchars($_POST['cp']);
         $ville = htmlspecialchars($_POST['ville']);
+        $lien = htmlspecialchars($_POST['lien_map']);
 
-        updateInfos($email, $tel, $num, $rue, $cp, $ville);
+        updateInfos($email, $tel, $num, $rue, $cp, $ville, $lien);
     }
     ?>
-<<<<<<< HEAD
-	  <div class="col-md-10">
-		  	<div class="row">
-                <div class="col-md-6">
-		  			<div class="row">
-		  				<div class="col-md-12">
-		  					<div class="content-box-header">
-			  					<div class="panel-title">Logo </div>
-								
-								<div class="panel-options">
-									<a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
-									<a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
-								</div>
-				  			</div>
-				  			<div class="content-box-large box-with-header">
-                                <form method="post">
-                                    <label class="btn btn-warning btn-xs">
-                                            Choisir un fichier <input name="logo" type="file"  style="display: none">
-                                    </label>                          
-                                </form>
-							</div>
-		  				</div>
-		  			</div>
-		  		</div> 
-                <!-- info agence -->
-                <?php $infos = viewAgenceInfos(); ?>
-		  		<div class="col-md-6">
-		  			<div class="row">
-		  				<div class="col-md-12">
-		  					<div class="content-box-header">
-			  					<div class="panel-title">Info Agence</div>
-								
-								<div class="panel-options">
-									<a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
-									<a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
-								</div>
-				  			</div>
-				  			<div class="content-box-large box-with-header">
-                                <div class="panel-body">
-		  					<table class="table table-striped">
-				              <thead>
-				                <tr>
-				                  <th>Email</th>
-				                  <th>Téléphone</th>
-				                  <th>Adresse</th>
-                                    <th>Lien carte web</th>
-				                </tr>
-				              </thead>
-				              <tbody>
-				                <tr>
-				                  <td><?= $infos['email'] ?></td>
-				                  <td><?= $infos['telephone'] ?></td>
-				                  <td><?= $infos['numero']." ".$infos['rue']."<br>".$infos['cp']." ".$infos['ville'] ?></td>
-                                    <td><?= $infos['lien_map'] ?></td>
-                                  </tr>
-                                        </tbody>
-				                    </table>
-		  				        </div>
-							</div>
-		  				</div>
-		  			</div>
-		  		</div>
-		  	</div>
-=======
     <div class="col-md-10">
         <div class="row">
             <div class="col-md-6">
@@ -121,6 +58,7 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                                         <th>Email</th>
                                         <th>Téléphone</th>
                                         <th>Adresse</th>
+                                        <th>Lien google map</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -128,6 +66,7 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                                         <td><?= $infos['email'] ?></td>
                                         <td><?= $infos['telephone'] ?></td>
                                         <td><?= $infos['numero']." ".$infos['rue']."<br>".$infos['cp']." ".$infos['ville'] ?></td>
+                                        <td><?= $infos['lien_map'] ?></td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -137,7 +76,6 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                 </div>
             </div>
         </div>
->>>>>>> b176294cf713e8a2c38ffd62b8463d53016b9193
 
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -152,37 +90,43 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" placeholder="Email" name="email">
+                                    <input type="email" class="form-control" placeholder="Email" name="email" value="<?= $infos['email'] ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputPassword3" class="col-sm-2 control-label">Téléphone</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" placeholder="Téléphone" name="tel">
+                                    <input type="text" class="form-control" placeholder="Téléphone" name="tel" value="<?= $infos['telephone'] ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Numéro</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" placeholder="Numéro" name="num">
+                                    <input type="text" class="form-control" placeholder="Numéro" name="num" value="<?= $infos['numero'] ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Rue</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" placeholder="Rue" name="rue">
+                                    <input type="text" class="form-control" placeholder="Rue" name="rue" value="<?= $infos['rue'] ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Code postal</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" placeholder="Code postal" name="cp">
+                                    <input type="text" class="form-control" placeholder="Code postal" name="cp" value="<?= $infos['cp'] ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Ville</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" placeholder="Ville" name="ville">
+                                    <input type="text" class="form-control" placeholder="Ville" name="ville" value="<?= $infos['ville'] ?>">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Lien google map</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" placeholder="Ville" name="lien_map" value="<?= $infos['lien_map'] ?>">
                                 </div>
                             </div>
                     </div>
