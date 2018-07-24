@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <?php 
     require "includes/functions.php";
 
@@ -13,21 +13,6 @@ catch(Exception $e)
 }
 
 ?>
-=======
-<?php
-
-try //Connexion à la bdd
-{
-$bdd = new PDO("mysql:host=localhost;dbname=avon;charset=UTF8","root","");
-}
-catch(Exception $e)
-{
-die ("Erreur de la connexion à la bdd");
-}
-
-?>
-
->>>>>>> 08c1a7b473d3b434690b014d6d31a2fee7bd4fb4
 <!DOCTYPE html>
 <html>
 <head>
