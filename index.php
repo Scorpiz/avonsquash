@@ -58,18 +58,19 @@ include "includes/functions.php";
                         <h1 class="main-color">SQUASH & MORE</h1>
                         <p class="white-text">Le plus australien des clubs de squash français.</p><br>
                         <h3 class="main-color">Horaires d'ouverture</h3>
-                        <?php $horaires = viewhoraire(); 
-                        foreach ($horaires as $key=>$horaire) {
-                        ?>
-                        <p class="white-text"> <?= $horaire['jour']." ". $horaire['heure'] ?></p>
-                        <?php } ?>
+                        <?php $horaires = viewhoraire();
+                                foreach ($horaires as $key=>$horaire) {
+                                    ?>
+                                    <p class="white-text"> <?= $horaire['jour']." ". $horaire['heure'] ?></p>
+                                <?php } ?>
                     </div>
                     <!-- /home content -->
+                    
                 </div>
             </div>
         </div>
         <!-- /home wrapper -->
-
+    </div>
 </header>
 <!-- /Header -->
     

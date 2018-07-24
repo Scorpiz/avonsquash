@@ -1,7 +1,5 @@
-
-<?php 
+<?php
     require "includes/functions.php";
-
 
 try //Connexion à la bdd
 {
@@ -13,6 +11,7 @@ catch(Exception $e)
 }
 
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
