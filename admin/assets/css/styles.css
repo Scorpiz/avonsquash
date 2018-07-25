@@ -580,6 +580,20 @@ body {
   clear:both;
 }
 
+form div.file-preview {
+    background:#ccc;
+    border:5px solid #fff;
+    box-shadow:0 0 4px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow:0 0 4px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow:0 0 4px rgba(0, 0, 0, 0.5);
+    display:inline-block;
+    float:left;
+    margin-right:1em;
+    width:60px;
+    height:60px;
+    text-align:center;
+}
+
 /* Responsive CSS */
 
 /* Mobile phones */

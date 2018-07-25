@@ -14,6 +14,7 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
 
         updateInfos($email, $tel, $num, $rue, $cp, $ville, $lien);
     }
+<<<<<<< HEAD
     if(isset($_POST['submitHoraire'])){
         $jour = htmlspecialchars($_POST['jour']);
         $heure = htmlspecialchars($_POST['heure']);
@@ -22,13 +23,61 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
     }
     
     ?>
+=======
+>>>>>>> c21f177f89960d10e1273d1fcc56031b92f958fb
 
-                <!-- info agence -->
+    $extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' );
+    $extension_upload = strtolower(  substr(  strrchr($_FILES['logo']['name'], '.')  ,1)  );
 
+    if(isset($_POST['submitLogo'])) {
+        $maxsize = 204800;
+        $logo = "logo";
+        if (in_array($extension_upload,$extensions_valides)) echo "Extension correcte";
+        if ($_FILES['logo']['size'] > $maxsize) $erreur = "Le fichier est trop gros";
+
+        $nom = "../assets/img/{$logo}.{$extension_upload}";
+        $resultat = move_uploaded_file($_FILES['logo']['tmp_name'],$nom);
+        if ($resultat) echo "Transfert réussi";
+    }
+
+
+    ?>
+
+    <!-- info agence -->
 
     <div class="col-md-10">
         <div class="row">
+<<<<<<< HEAD
                    <!-- info agence -->
+=======
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="content-box-header">
+                            <div class="panel-title">Logo </div>
+                            <div class="panel-options">
+                                <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+                                <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
+                            </div>
+                        </div>
+                        <div class="content-box-large box-with-header">
+                            <form method="post" action="#" enctype="multipart/form-data">
+                                <div class="file-preview"></div>
+                                <input type="hidden" name="MAX_FILE_SIZE" value="204800">
+                                <label class="btn btn-warning btn-xs">
+                                    Choisir un fichier <input name="logo" type="file" id="ImgInp" style="display: none">
+                                </label>
+                                <input type="submit" name="submitLogo">
+                                <img id="blah" src="#" alt="your image" />
+<!--                                <a href="assets/img/logo.--><?php //$extensions_valides ?><!--"><img src="../assets/img/miniatures/logo.--><?php //$extensions_valides ?><!--"></a>-->
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- info agence -->
+>>>>>>> c21f177f89960d10e1273d1fcc56031b92f958fb
             <?php $infos = viewAgenceInfos(); ?>
             <div class="col-md-6">
                 <div class="row">
@@ -37,7 +86,7 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                             <div class="panel-title">Info Agence</div>
 
                             <div class="panel-options">
-                                <a href="#" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-cog"></i></a>
+                                <a href="#" data-toggle="modal" data-target="#ModalInfo"><i class="glyphicon glyphicon-cog"></i></a>
                             </div>
                         </div>
                         <div class="content-box-large box-with-header">
@@ -130,8 +179,13 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
      
         </div>
 
+<<<<<<< HEAD
         <!-- Modal info agence -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+=======
+        <!-- Modal -->
+        <div class="modal fade" id="ModalInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+>>>>>>> c21f177f89960d10e1273d1fcc56031b92f958fb
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -186,6 +240,7 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
                         <button type="submit" class="btn btn-primary" name="submitInfo">Enregistrer</button>
+<<<<<<< HEAD
                     </div>
                     </form>
                 </div><!-- /.modal-content -->
@@ -219,6 +274,8 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
                         <button type="submit" class="btn btn-primary" name="submitInfo">Enregistrer</button>
+=======
+>>>>>>> c21f177f89960d10e1273d1fcc56031b92f958fb
                     </div>
                     </form>
                 </div><!-- /.modal-content -->
