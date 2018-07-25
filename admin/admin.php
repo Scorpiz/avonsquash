@@ -33,7 +33,7 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                             </div>
                         </div>
                         <div class="content-box-large box-with-header">
-                            <form method="post" method="post" action="#" enctype="multipart/form-data">
+                            <form method="post" action="#" enctype="multipart/form-data">
                                 <input type="hidden" name="MAX_FILE_SIZE" value="12345" />
                                 <label class="btn btn-warning btn-xs">
                                     Choisir un fichier <input name="logo" type="file"  style="display: none">
