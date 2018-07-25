@@ -1024,6 +1024,15 @@ header {
     color: gray;
 }
 
+.info-content-priced{
+    padding-left: 30px;
+}
+
+.info-content{
+    padding-left: 30px;
+    padding-right: 10px
+}
+
 /*------------------------------------*\
 	Testimonial
 \*------------------------------------*/
