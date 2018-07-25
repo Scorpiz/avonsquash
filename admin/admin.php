@@ -15,7 +15,10 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
         updateInfos($email, $tel, $num, $rue, $cp, $ville, $lien);
     }
     ?>
+
                 <!-- info agence -->
+
+
     <div class="col-md-10">
         <div class="row">
             <div class="col-md-6">
@@ -30,7 +33,8 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                             </div>
                         </div>
                         <div class="content-box-large box-with-header">
-                            <form method="post">
+                            <form method="post" method="post" action="#" enctype="multipart/form-data">
+                                <input type="hidden" name="MAX_FILE_SIZE" value="12345" />
                                 <label class="btn btn-warning btn-xs">
                                     Choisir un fichier <input name="logo" type="file"  style="display: none">
                                 </label>
@@ -77,6 +81,7 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                 </div>
             </div>
         </div>
+
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -90,43 +95,43 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" placeholder="Email" name="email">
+                                    <input type="email" class="form-control" placeholder="Email" name="email" value="<?= $infos['email'] ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputPassword3" class="col-sm-2 control-label">Téléphone</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" placeholder="Téléphone" name="tel">
+                                    <input type="text" class="form-control" placeholder="Téléphone" name="tel" value="<?= $infos['telephone'] ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Numéro</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" placeholder="Numéro" name="num">
+                                    <input type="text" class="form-control" placeholder="Numéro" name="num" value="<?= $infos['numero'] ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Rue</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" placeholder="Rue" name="rue">
+                                    <input type="text" class="form-control" placeholder="Rue" name="rue" value="<?= $infos['rue'] ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Code postal</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" placeholder="Code postal" name="cp">
+                                    <input type="text" class="form-control" placeholder="Code postal" name="cp" value="<?= $infos['cp'] ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Ville</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" placeholder="Ville" name="ville">
+                                    <input type="text" class="form-control" placeholder="Ville" name="ville" value="<?= $infos['ville'] ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Lien google map</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" placeholder="Lien google map" name="lien_map">
+                                    <input type="text" class="form-control" placeholder="Lien" name="lien_map" value="<?= $infos['lien_map'] ?>">
                                 </div>
                             </div>
                     </div>
