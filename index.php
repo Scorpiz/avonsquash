@@ -19,8 +19,9 @@ include "includes/functions.php";
                 <!-- Logo -->
                 <div class="navbar-brand">
                     <a href="index.php">
-                        <img class="logo" src="http://avonsquash.com/wp-content/uploads/2018/01/cropped-Squash-Logo.jpg" alt="logo">
-                        <img class="logo-alt" src="http://avonsquash.com/wp-content/uploads/2018/01/cropped-Squash-Logo.jpg" alt="logo">
+                        <?php $extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' ); ?>
+                        <img class="logo" src="assets/img/logo.<?php $extensions_valides ?>" alt="logo">
+                        <img class="logo-alt" src="assets/img/logo.<?php $extensions_valides ?>" alt="logo">
                     </a>
                 </div>
                 <!-- /Logo -->
