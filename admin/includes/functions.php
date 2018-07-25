@@ -30,6 +30,7 @@ function viewAgenceInfos(){
 function updateInfos($email, $tel, $num, $rue, $cp, $ville, $lien){
     global $bdd;
     $req = $bdd->prepare("UPDATE agence SET email = ?, telephone = ?, numero = ?, rue = ?, cp = ?, ville = ?, lien_map = ?");
+    
     $req->execute(array(
         $email,
         $tel,

@@ -36,7 +36,7 @@ catch(Exception $e)
             <div class="col-md-5">
                 <!-- Logo -->
                 <div class="logo">
-                    <h1><a href="index.html">Bootstrap Admin Theme</a></h1>
+                    <h1><a href="admin.php">Acces Admin</a></h1>
                 </div>
             </div>
             <div class="col-md-5">
@@ -47,10 +47,10 @@ catch(Exception $e)
                             <span class="input-group-btn">
 	                         <button class="btn btn-primary" type="button">Search</button>
 	                       </span>
-                        </div>
+                        </div> 
                     </div>
                 </div>
-            </div>
+            </div> 
             <div class="col-md-2">
                 <div class="navbar navbar-inverse" role="banner">
                     <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
@@ -76,10 +76,10 @@ catch(Exception $e)
                 <ul class="nav">
                     <!-- Main menu -->
                     <li class="current"><a href="admin.php"><i class="glyphicon glyphicon-home"></i>Accueil / Info Agence</a></li>
-                    <li><a href="calendar.html"><i class="glyphicon glyphicon-calendar"></i> Tarifs</a></li>
-                    <li><a href="stats.html"><i class="glyphicon glyphicon-stats"></i>Espace Pro</a></li>
-                    <li><a href="tables.html"><i class="glyphicon glyphicon-list"></i>Espace Partenaire</a></li>
-                    <li><a href="buttons.html"><i class="glyphicon glyphicon-record"></i>Admin</a></li>
+                    <li><a href="tarif.php"><i class="glyphicon glyphicon-calendar"></i> Tarifs</a></li>
+                    <li><a href="espacepro.php"><i class="glyphicon glyphicon-stats"></i>Espace Pro</a></li>
+                    <li><a href="espacepart.php"><i class="glyphicon glyphicon-list"></i>Espace Partenaire</a></li>
+                    <li><a href="administration.php"><i class="glyphicon glyphicon-record"></i>Admin</a></li>
                   <!--  <li><a href="editors.html"><i class="glyphicon glyphicon-pencil"></i> Editors</a></li>
                     <li><a href="forms.html"><i class="glyphicon glyphicon-tasks"></i> Forms</a></li>
                     <li class="submenu">

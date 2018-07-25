@@ -15,6 +15,10 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
         updateInfos($email, $tel, $num, $rue, $cp, $ville, $lien);
     }
     ?>
+
+                <!-- info agence -->
+
+
     <div class="col-md-10">
         <div class="row">
             <div class="col-md-6">
@@ -28,8 +32,13 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                             </div>
                         </div>
                         <div class="content-box-large box-with-header">
+<<<<<<< HEAD
                             <form method="post" action="#" enctype="multipart/form-data">
                                 <input type="hidden" name="MAX_FILE_SIZE" value="204800">
+=======
+                            <form method="post" method="post" action="#" enctype="multipart/form-data">
+                                <input type="hidden" name="MAX_FILE_SIZE" value="12345" />
+>>>>>>> 082512e2e56810f81eff610a4fed65615d362026
                                 <label class="btn btn-warning btn-xs">
                                     Choisir un fichier <input name="logo" type="file"  style="display: none">
                                 </label>
