@@ -22,14 +22,14 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                     <div class="col-md-12">
                         <div class="content-box-header">
                             <div class="panel-title">Logo </div>
-
                             <div class="panel-options">
                                 <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
                                 <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
                             </div>
                         </div>
                         <div class="content-box-large box-with-header">
-                            <form method="post">
+                            <form method="post" action="#" enctype="multipart/form-data">
+                                <input type="hidden" name="MAX_FILE_SIZE" value="204800">
                                 <label class="btn btn-warning btn-xs">
                                     Choisir un fichier <input name="logo" type="file"  style="display: none">
                                 </label>
@@ -86,7 +86,7 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                         <h4 class="modal-title" id="myModalLabel">Modifier les informations</h4>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal" role="form" method="post" action="#">
+                        <form class="form-horizontal" method="post" action="#">
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
                                 <div class="col-sm-10">
@@ -126,7 +126,7 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Lien google map</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" placeholder="Ville" name="lien_map" value="<?= $infos['lien_map'] ?>">
+                                    <input type="text" class="form-control" placeholder="Lien" name="lien_map" value="<?= $infos['lien_map'] ?>">
                                 </div>
                             </div>
                     </div>

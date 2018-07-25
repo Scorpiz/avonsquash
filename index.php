@@ -59,13 +59,13 @@ include "includes/functions.php";
                         <p class="white-text">Le plus australien des clubs de squash français.</p><br>
                         <h3 class="main-color">Horaires d'ouverture</h3>
                         <?php $horaires = viewhoraire();
-                                foreach ($horaires as $key=>$horaire) {
-                                    ?>
-                                    <p class="white-text"> <?= $horaire['jour']." ". $horaire['heure'] ?></p>
-                                <?php } ?>
+                        foreach ($horaires as $key=>$horaire) {
+                            ?>
+                            <p class="white-text"> <?= $horaire['jour']." ". $horaire['heure'] ?></p>
+                        <?php } ?>
                     </div>
                     <!-- /home content -->
-                    
+
                 </div>
             </div>
         </div>
@@ -73,7 +73,7 @@ include "includes/functions.php";
     </div>
 </header>
 <!-- /Header -->
-    
+
 <!-- Blog -->
 <div id="blog" class="section md-padding">
 
@@ -138,55 +138,135 @@ include "includes/functions.php";
             <!-- /Section header -->
 
             <!-- tarif -->
-            <?php $formules = viewFormule(0);
+            <?php $formules = viewFormule(0, 1, 0);
             foreach ($formules as $key=>$formule) {
                 $tarifs = viewTarif($formule['id_f']); ?>
-            <div class="col-sm-12">
-                <div class="pricing">
-                    <div class="price-head">
-                        <?php if(!empty($formule['titre'] && $formule['sous_titre'])){ ?>
-                        <span class="price-title"><?= $formule['titre'] ?></span>
-                        <p class="subtitle"><?= $formule['sous_titre'] ?></p>
-                    <?php } ?>
-                    </div>
-                    <?php foreach ($tarifs as $keyTarif=>$tarif) {?>
-                    <ul class="price-content">
-                        <li>
-                            <p class="description"><?= $tarif['libelle_ta'] ?></p>
-                            <p class="price-amount"><?= $tarif['prix'] ?> €</p>
-                            <p class="comment"><?= $tarif['commentaire'] ?></p>
-                        </li>
-                    </ul>
-                    <?php } ?>
-                </div>
-            </div>
-                <?php } ?>
-
-            <?php $formules0 = viewFormule(1);
-            foreach ($formules0 as $key=>$formule0) {
-                $tarifs0 = viewTarif($formule0['id_f'], 1); ?>
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                     <div class="pricing">
                         <div class="price-head">
-                            <span class="price-title"><?= $formule0['titre'] ?></span>
-                            <p class="subtitle"><?= $formule0['sous_titre'] ?></p>
+                            <?php if(!empty($formule['titre'] || $formule['sous_titre'])){ ?>
+                                <span class="price-title"><?= $formule['titre'] ?></span>
+                                <p class="subtitle"><?= $formule['sous_titre'] ?></p>
+                            <?php } ?>
                         </div>
-                        <?php foreach ($tarifs0 as $keyTarif=>$tarif0) {?>
+                        <?php foreach ($tarifs as $keyTarif=>$tarif) {?>
                             <ul class="price-content">
-                                <h2 class="title-status"><?= $tarif0['libelle_s'] ?></h2>
                                 <li>
-                                    <p class="description"><?= $tarif0['libelle_ta'] ?></p>
-                                    <p class="price-amount"><?= $tarif0['prix'] ?> €</p>
-                                    <p class="comment"><?= $tarif0['commentaire'] ?></p>
+                                    <p class="description"><?= $tarif['libelle_ta'] ?></p>
+                                    <p class="price-amount"><?= $tarif['prix'] ?> €</p>
+                                    <p class="comment"><?= $tarif['commentaire'] ?></p>
                                 </li>
                             </ul>
                         <?php } ?>
                     </div>
                 </div>
             <?php } ?>
+
+            <?php $formules0 = viewFormule(1, 1, 0);
+            foreach ($formules0 as $key=>$formule0) {
+                $tarifs0 = viewTarif($formule0['id_f']); ?>
+                <div class="col-sm-6">
+                    <div class="pricing">
+                        <div class="price-head">
+                            <span class="price-title"><?= $formule0['titre'] ?></span>
+                            <p class="subtitle"><?= $formule0['sous_titre'] ?></p>
+                        </div>
+                        <?php foreach ($tarifs0 as $keyTarif=>$tarif0) {
+                            if($keyTarif == 0){ ?>
+                                <ul class="price-content">
+                                    <?php if($tarif0['libelle_s'] != 'Aucun statut'){ ?>
+                                        <h2 class="title-status"><?= $tarif0['libelle_s'] ?></h2>
+                                    <?php } ?>
+                                    <li>
+                                        <p class="description"><?= $tarif0['libelle_ta'] ?></p>
+                                        <?php if(!empty($tarif0['prix'])){ ?>
+                                            <p class="price-amount"><?= $tarif0['prix'] ?> €</p>
+                                        <?php } ?>
+                                        <p class="comment"><?= $tarif0['commentaire'] ?></p>
+                                    </li>
+                                </ul>
+                            <?php }else if ($tarifs0[$keyTarif - 1]['libelle_s'] == $tarif0['libelle_s']){ ?>
+                                <ul class="price-content">
+                                    <li>
+                                        <p class="description"><?= $tarif0['libelle_ta'] ?></p>
+                                        <?php if(!empty($tarif0['prix'])){ ?>
+                                            <p class="price-amount"><?= $tarif0['prix'] ?> €</p>
+                                        <?php } ?>
+                                        <p class="comment"><?= $tarif0['commentaire'] ?></p>
+                                    </li>
+                                </ul>
+                            <?php }else{ ?>
+                                <ul class="price-content">
+                                    <?php if($tarif0['libelle_s'] != 'Aucun statut'){ ?>
+                                        <h2 class="title-status"><?= $tarif0['libelle_s'] ?></h2>
+                                    <?php } ?>
+                                    <li>
+                                        <p class="description"><?= $tarif0['libelle_ta'] ?></p>
+                                        <?php if(!empty($tarif0['prix'])){ ?>
+                                            <p class="price-amount"><?= $tarif0['prix'] ?> €</p>
+                                        <?php } ?>
+                                        <p class="comment"><?= $tarif0['commentaire'] ?></p>
+                                    </li>
+                                </ul>
+                            <?php }
+                            } ?>
+                    </div>
+                </div>
+            <?php } ?>
+
             <!-- /tarif -->
 
+        </div>
+        <!-- Row -->
 
+
+        <!-- Row -->
+        <div class="row md-padding">
+
+            <!-- Informations complémentaires -->
+
+            <!-- Section header -->
+            <div class="section-header text-center">
+                <h2 class="title">Informations complémentaires</h2>
+            </div>
+            <!-- /Section header -->
+
+            <?php $formulesInfo = viewFormule(1, 1, 1);
+            foreach ($formulesInfo as $key=>$formuleInfo) {
+                $tarifsInfo = viewTarif($formuleInfo['id_f']); ?>
+                <div class="col-sm-4">
+                    <div class="pricing">
+                        <div class="price-head">
+                            <?php if(!empty($formuleInfo['titre'] || $formuleInfo['sous_titre'])){ ?>
+                                <span class="price-title"><?= $formuleInfo['titre'] ?></span>
+                                <p class="subtitle"><?= $formuleInfo['sous_titre'] ?></p>
+                            <?php } ?>
+                        </div>
+                        <?php foreach ($tarifsInfo as $keyTarifInfo=>$tarifInfo) {
+                            if(!empty($tarifInfo['prix'])){ ?>
+                            <ul class="info-content-priced">
+                                <li>
+                                    <p class="description"><?= $tarifInfo['libelle_ta'] ?></p>
+
+                                    <p class="price-amount"><?= $tarifInfo['prix'] ?> €</p>
+
+                                    <p class="comment"><?= $tarifInfo['commentaire'] ?></p>
+                                </li>
+                            </ul>
+                            <?php }else{ ?>
+                                <ul class="info-content">
+                                    <li>
+                                        <p class="description"><?= $tarifInfo['libelle_ta'] ?></p>
+                                        <p class="comment"><?= $tarifInfo['commentaire'] ?></p>
+                                    </li>
+                                </ul>
+                            <?php }
+                             } ?>
+                    </div>
+                </div>
+            <?php } ?>
+
+            <!-- /Informations complémentaires -->
         </div>
         <!-- Row -->
 
@@ -211,7 +291,7 @@ include "includes/functions.php";
             </div>
             <!-- /Section-header -->
             <?php $infos = viewAgenceInfos(); ?>
-            
+
             <!-- contact -->
             <div class="col-sm-4">
                 <div class="contact">
@@ -236,10 +316,10 @@ include "includes/functions.php";
             <!-- contact -->
             <div class="col-sm-4">
                 <div class="contact">
-                   <a href="<?= $infos['lien_map']?>"> 
-                    <i class="fa fa-map-marker"></i>
-                    <h3>Adresse</h3>
-                    <p><?= $infos['numero']." ".$infos['rue']."<br>".$infos['cp']." ".$infos['ville'] ?></p>
+                    <a href="<?= $infos['lien_map']?>">
+                        <i class="fa fa-map-marker"></i>
+                        <h3>Adresse</h3>
+                        <p><?= $infos['numero']." ".$infos['rue']."<br>".$infos['cp']." ".$infos['ville'] ?></p>
                     </a>
                 </div>
             </div>
