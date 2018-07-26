@@ -28,7 +28,7 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
     $extension_upload = strtolower(  substr(  strrchr($_FILES['logo']['name'], '.')  ,1)  );
 
     if(isset($_POST['submitLogo'])) {
-        $maxsize = 204800;
+        $maxsize = 204800000000000000000000000000000000000000000;
         $logo = "logo";
         if (in_array($extension_upload,$extensions_valides)) echo "Extension correcte";
         if ($_FILES['logo']['size'] > $maxsize) $erreur = "Le fichier est trop gros";
@@ -37,13 +37,6 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
         $resultat = move_uploaded_file($_FILES['logo']['tmp_name'],$nom);
         if ($resultat) echo "Transfert réussi";
     }
-    if(isset($_POST['addHoraire'])){
-        $jour = htmlspecialchars($_POST['jour']);
-        $heure = htmlspecialchars($_POST['heure']);
-
-        addHoraire($jour, $heure);
-    }
-
     ?>
 
 
@@ -136,14 +129,13 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                 </div>
                 <div class="content-box-large box-with-header">
                     <form method="post" action="#" enctype="multipart/form-data">
-                        <div class="file-preview"></div>
-                        <input type="hidden" name="MAX_FILE_SIZE" value="204800">
+                        <!--<div class="file-preview"></div>-->
+                        <input type="hidden" name="MAX_FILE_SIZE" value=3204800000000000000000000000000000000000000000>
                         <label class="btn btn-warning btn-xs">
-                            Choisir un fichier <input name="logo" type="file" id="ImgInp" style="display: none">
+                            Choisir un fichier <input name="logo" type="file" style="display: none">
                         </label>
                         <input type="submit" name="submitLogo">
-                        <img id="blah" src="#" alt="your image" />
-                        <a href="assets/img/logo.<?php $extensions_valides ?>"><img src="../assets/img/miniatures/logo.<?php $extensions_valides ?>"></a>
+                    <!--    <a href="assets/img/logo.<?php $extensions_valides ?>"><img src="../assets/img/miniatures/logo.<?php $extensions_valides ?>"></a>-->
                     </form>
                 </div>
             </div>
@@ -294,7 +286,6 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
         </div><!-- /.modal -->
         <!-- /Modal -->
 
-    +
     <?php
 } else{
     header("Location:login.php");

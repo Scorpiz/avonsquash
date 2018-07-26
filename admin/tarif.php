@@ -3,7 +3,7 @@
 <div class="col-md-10">
     <div class="row">
             <!-- Changement Formule -->
-        <div class="col-md-6">
+        <div class="col-md-12">
                 <?php $ChangFormule = viewChangFormule(); ?>
             <div class="content-box-large">
                 <div class="content-box-hearder panel-heading">
@@ -44,7 +44,7 @@
 <?php $ChangStatut = viewStatus(); ?>
 
     <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
   					<div class="content-box-large">
 		  				<div class="content-box-hearder panel-heading">
 							<div class="panel-title">Changement Statut</div>
@@ -58,11 +58,15 @@
 				              <thead>
 				                <tr>
 				                  <th>Statut</th>
+                                    <th>Modifier</th>
+                                    <th>Supprimer</th>
 				                </tr>
 				              </thead>
 				              <tbody>
 				                <tr><?php foreach ($ChangStatut as $key=>$ChangStatut) { ?>
 				                  <td><?= $ChangStatut['libelle_s'] ?></td>
+                                    <td><button class="btn btn-success" data-toggle="modal" data-target="#">Modifier</button></td>
+                                    <td><button class="btn btn-danger">Supprimer</button></td>
 				                </tr> <?php } ?>
 				              </tbody>
 				            </table>
@@ -90,6 +94,9 @@
 				                  <th>Commentaire</th>
 				                  <th>Prix</th>
 				                  <th>Afficher ou Masquer</th>
+                                    <th>Modifier</th>
+                                    <th>Supprimer</th>
+                                    
 				                </tr>
 				              </thead>
 				              <tbody>
@@ -97,7 +104,9 @@
 				                  <td><?= $ChangeTarif['libelle_ta']?></td>
 				                  <td><?= $ChangeTarif['commentaire']?></td>
 				                  <td><?= $ChangeTarif['prix']?></td>
-				                  <td></td>
+                                    <td></td>
+				                  <td><button class="btn btn-success" data-toggle="modal" data-target="#">Modifier</button></td>
+                                    <td><button class="btn btn-danger">Supprimer</button></td>
 				                </tr> <?php } ?>
 				              </tbody>
 				            </table>
