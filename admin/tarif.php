@@ -1,22 +1,135 @@
 <?php 
     include "includes/header.php"; ?>
-    <div class="col-md-10">
-        <div class="row">
-            <div class="col-md-12 panel-warning">
-                <div class="content-box-header panel-heading">
-                    <div class="panel-title ">Changement Tarifs</div>
-
+<div class="col-md-10">
+    <div class="row">
+            <!-- Changement Formule -->
+        <div class="col-md-6">
+                <?php $ChangFormule = viewChangFormule(); ?>
+            <div class="content-box-large">
+                <div class="content-box-hearder panel-heading">
+                    <div class="panel-title">Changement Formule</div>
                     <div class="panel-options">
                         <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
                         <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
                     </div>
                 </div>
-                <div class="content-box-large box-with-header">
-                    Pellentesque luctus quam quis consequat vulputate. Sed sit amet diam ipsum. Praesent in pellentesque diam, sit amet dignissim erat. Aliquam erat volutpat. Aenean laoreet metus leo, laoreet feugiat enim suscipit quis. Praesent mauris mauris, ornare vitae tincidunt sed, hendrerit eget augue. Nam nec vestibulum nisi, eu dignissim nulla.
-                    <br /><br />
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Titre formule</th>
+                                <th>Sous titre formule</th>
+                                <th>Afficher ou Masquer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <?php foreach ($ChangFormule as $key=>$ChangFormule) {
+                                        if (!empty($ChangFormule['titre'])){?>
+                                <td><?= $ChangFormule['titre'] ?> </td>
+                                <?php }else{ ?>
+                                <td> Aucun titre </td>
+                                <?php } ?>
+                                <td><?= $ChangFormule['sous_titre']?></td>
+                                <td></td>
+                            </tr> <?php } ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </div>
+          </div>
     </div>
+
+            <!-- Changement Statut -->
+<?php $ChangStatut = viewStatus(); ?>
+
+    <div class="row">
+            <div class="col-md-6">
+  					<div class="content-box-large">
+		  				<div class="content-box-hearder panel-heading">
+							<div class="panel-title">Changement Statut</div>
+							<div class="panel-options">
+								<a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+								<a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
+							</div>
+						</div>
+		  				<div class="panel-body">
+		  					<table class="table table-striped">
+				              <thead>
+				                <tr>
+				                  <th>Statut</th>
+				                </tr>
+				              </thead>
+				              <tbody>
+				                <tr><?php foreach ($ChangStatut as $key=>$ChangStatut) { ?>
+				                  <td><?= $ChangStatut['libelle_s'] ?></td>
+				                </tr> <?php } ?>
+				              </tbody>
+				            </table>
+		  				</div>
+		  			</div>
+  				</div>
+    </div>
+        <!-- Changement tarifs -->
+<?php $ChangeTarif = viewChangTarif(); ?>
+  				<div class="col-md-12">
+  					<div class="content-box-large">
+		  				<div class="panel-heading">
+							<div class="panel-title">Changement Tarif</div>
+							
+							<div class="panel-options">
+								<a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+								<a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
+							</div>
+						</div>
+		  				<div class="panel-body">
+		  					<table class="table table-striped">
+				              <thead>
+				                <tr>
+				                  <th>Libelle Tarif</th>
+				                  <th>Commentaire</th>
+				                  <th>Prix</th>
+				                  <th>Afficher ou Masquer</th>
+				                </tr>
+				              </thead>
+				              <tbody>
+				                <tr><?php foreach ($ChangeTarif as $key=>$ChangeTarif) { ?>
+				                  <td><?= $ChangeTarif['libelle_ta']?></td>
+				                  <td><?= $ChangeTarif['commentaire']?></td>
+				                  <td><?= $ChangeTarif['prix']?></td>
+				                  <td></td>
+				                </tr> <?php } ?>
+				              </tbody>
+				            </table>
+		  				</div>
+		  			</div>
+  				</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <?php    include "includes/footer.php"; ?>

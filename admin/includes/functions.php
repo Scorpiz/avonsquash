@@ -55,16 +55,35 @@ function updateHoraire($jour, $heure){
     $heure,
     ));  
 }
-function addHoraire(){
+function addHoraire($jour, $heure){
     global $bdd;
-    $req1 = $bdd->prepare("INSERT into date VALUES(?) ")
-    $req2 = $bdd->prepare("INSERT into horaire VALUES(?)")
+    $req1 = $bdd->prepare("INSERT into date VALUES(?) ");
+    $req2 = $bdd->prepare("INSERT into horaire VALUES(?)");
     $req1->execute(array(
         $jour
     ));
     $req2->execute(array(
         $heure
     ));
+}
+
+function viewInfoAdmin(){
+    global $bdd;
+    $req = $bdd->prepare("SELECT * FROM users");
+    $req->execute();
+    return $req->fetch();
+}
+function viewChangFormule(){
+    global $bdd;
+    $req = $bdd->prepare("SELECT * FROM formule");
+    $req->execute();
+    return $req->fetchAll();
+}
+function viewChangTarif() {
+    global $bdd;
+    $req = $bdd->prepare("SELECT * FROM tarif");
+    $req->execute();
+    return $req->fetchAll();
 }
 ?>
 

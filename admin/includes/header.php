@@ -81,7 +81,7 @@ catch(Exception $e)
                     <li><a href="tarif.php"><i class="glyphicon glyphicon-calendar"></i> Tarifs</a></li>
                     <li><a href="espacepro.php"><i class="glyphicon glyphicon-stats"></i>Espace Pro</a></li>
                     <li><a href="espacepart.php"><i class="glyphicon glyphicon-list"></i>Espace Partenaire</a></li>
-                    <li><a href="administration.php"><i class="glyphicon glyphicon-record"></i>Admin</a></li>
+                    <li><a href="adminprofil.php"><i class="glyphicon glyphicon-record"></i>Profil Admin</a></li>
                   <!--  <li><a href="editors.html"><i class="glyphicon glyphicon-pencil"></i> Editors</a></li>
                     <li><a href="forms.html"><i class="glyphicon glyphicon-tasks"></i> Forms</a></li>
                     <li class="submenu">
