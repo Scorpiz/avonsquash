@@ -43,28 +43,27 @@ function updateInfos($email, $tel, $num, $rue, $cp, $ville, $lien){
 }
 function viewHoraire(){
     global $bdd;
-    $req = $bdd->prepare("SELECT * FROM date,horaire WHERE date.id_d = horaire.id_d");
+    $req = $bdd->prepare("SELECT * FROM date, horaire WHERE date.id_d = horaire.id_d");
     $req->execute();
     return $req->fetchAll();
 }
-function updateHoraire($jour, $heure){
+
+function updateHoraire($jour, $heure, $id_d){
      global $bdd;
-    $req = $bdd->prepare("UPDATE date, horaire SET date.jour = ?, horaire.heure = ?");
+    $req = $bdd->prepare("UPDATE date, horaire SET date.jour = ?, horaire.heure = ? WHERE date.id_d='".$id_d."'");
     $req->execute(array(
-    $jour,
-    $heure,
-    ));  
-}
-function addHoraire($jour, $heure){
-    global $bdd;
-    $req1 = $bdd->prepare("INSERT into date VALUES(?) ");
-    $req2 = $bdd->prepare("INSERT into horaire VALUES(?)");
-    $req1->execute(array(
-        $jour
-    ));
-    $req2->execute(array(
+        $jour,
         $heure
     ));
+}
+
+function addJour($jour){
+    global $bdd;
+    $req = $bdd->prepare("INSERT INTO date(jour) VALUES(:jour)");
+    $req->execute(array(
+        ':jour' => $jour
+    ));
+    return $req->fetchAll();
 }
 
 function viewInfoAdmin(){
@@ -85,6 +84,22 @@ function viewChangTarif() {
     $req->execute();
     return $req->fetchAll();
 }
+function addHeure($heure, $jour){
+    global $bdd;
+    $req = $bdd->prepare("INSERT INTO horaire(heure, id_d) VALUES('".$heure."', (SELECT id_d FROM date WHERE jour ='".$jour."'))");
+    $req->execute();
+    return $req->fetchAll();
+}
+
+
+function deleteHoraire($id_d){
+    global $bdd;
+    $req = $bdd->prepare("DELETE FROM horaire WHERE id_d =".$id_d);
+    $req->execute();
+    $req2 = $bdd->prepare("DELETE FROM date WHERE id_d =".$id_d);
+    $req2->execute();
+}
+
 ?>
 
 
