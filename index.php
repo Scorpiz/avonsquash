@@ -248,9 +248,7 @@ include "includes/functions.php";
                             <ul class="info-content-priced">
                                 <li>
                                     <p class="description"><?= $tarifInfo['libelle_ta'] ?></p>
-
                                     <p class="price-amount"><?= $tarifInfo['prix'] ?> €</p>
-
                                     <p class="comment"><?= $tarifInfo['commentaire'] ?></p>
                                 </li>
                             </ul>

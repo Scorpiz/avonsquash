@@ -14,17 +14,16 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
 
         updateInfos($email, $tel, $num, $rue, $cp, $ville, $lien);
     }
-<<<<<<< HEAD
-    if(isset($_POST['submitHoraire'])){
+
+    if(isset($_POST['addHoraire'])){
         $jour = htmlspecialchars($_POST['jour']);
         $heure = htmlspecialchars($_POST['heure']);
-        
-        updateHoraire($jour, $heure);
+
+        addJour($jour);
+        addHeure($heure , $jour);
+
     }
-    
-    ?>
-=======
->>>>>>> c21f177f89960d10e1273d1fcc56031b92f958fb
+
 
     $extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' );
     $extension_upload = strtolower(  substr(  strrchr($_FILES['logo']['name'], '.')  ,1)  );
@@ -43,81 +42,15 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
 
     ?>
 
-    <!-- info agence -->
+
 
     <div class="col-md-10">
         <div class="row">
-<<<<<<< HEAD
-                   <!-- info agence -->
-=======
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="content-box-header">
-                            <div class="panel-title">Logo </div>
-                            <div class="panel-options">
-                                <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
-                                <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
-                            </div>
-                        </div>
-                        <div class="content-box-large box-with-header">
-                            <form method="post" action="#" enctype="multipart/form-data">
-                                <div class="file-preview"></div>
-                                <input type="hidden" name="MAX_FILE_SIZE" value="204800">
-                                <label class="btn btn-warning btn-xs">
-                                    Choisir un fichier <input name="logo" type="file" id="ImgInp" style="display: none">
-                                </label>
-                                <input type="submit" name="submitLogo">
-                                <img id="blah" src="#" alt="your image" />
-<!--                                <a href="assets/img/logo.--><?php //$extensions_valides ?><!--"><img src="../assets/img/miniatures/logo.--><?php //$extensions_valides ?><!--"></a>-->
-                            </form>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- info agence -->
->>>>>>> c21f177f89960d10e1273d1fcc56031b92f958fb
-            <?php $infos = viewAgenceInfos(); ?>
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="content-box-header">
-                            <div class="panel-title">Info Agence</div>
 
-                            <div class="panel-options">
-                                <a href="#" data-toggle="modal" data-target="#ModalInfo"><i class="glyphicon glyphicon-cog"></i></a>
-                            </div>
-                        </div>
-                        <div class="content-box-large box-with-header">
-                            <div class="panel-body">
-                                <table class="table table-striped">
-                                    <thead>
-                                    <tr>
-                                        <th>Email</th>
-                                        <th>Téléphone</th>
-                                        <th>Adresse</th>
-                                        <th>Lien google map</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td><?= $infos['email'] ?></td>
-                                        <td><?= $infos['telephone'] ?></td>
-                                        <td><?= $infos['numero']." ".$infos['rue']."<br>".$infos['cp']." ".$infos['ville'] ?></td>
-                                        <td><?= $infos['lien_map'] ?></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
             <!-- Horaire -->
             <div class="col-md-6">
-                 <?php $infoH = viewHoraire(); ?>
+                <?php $infoHs = viewHoraire(); ?>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="content-box-header">
@@ -134,58 +67,104 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                                     <tr>
                                         <th>Date/jour/durée</th>
                                         <th>Heure</th>
-                                        <th>Supprimer</th>
                                         <th>Modifier</th>
+                                        <th>Supprimer</th>
                                     </tr>
                                     </thead>
-                                    <tbody><?php foreach ($infoH as $key=>$infoH) { ?>
-                                    <tr> 
+                                    <tbody><?php foreach ($infoHs as $key=>$infoH) { ?>
+                                        <tr>
                                         <td><?= $infoH['jour'] ?></td>
                                         <td><?= $infoH['heure'] ?></td>
-                                    <form method="post" action=""> 
-                                        <td><button type="submit" class="btn btn-danger" name="supprimerHoraire">Supprimer</button></td>
-                                        <td><button type="submit" class="btn btn-success" name="modifHoraire">Modifier</button></td> 
-                                    </form>                                 
-                                    </tr><?php } ?>
+                                        <form method="post" action="">
+                                            <td><button class="btn btn-success" data-toggle="modal" data-target="#modalHoraireEdit"">Modifier</button></td>
+                                            <td><a href="delete.php?type=hor&id=<?= $infoH['id_d'] ?>" class="btn btn-danger">Supprimer</a></td>
+                                        </form>
+                                        </tr><?php } ?>
                                     </tbody>
-                                </table> 
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Logo -->
+
+            <!-- info agence -->
+
+            <?php $infos = viewAgenceInfos(); ?>
             <div class="col-md-6">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="content-box-header">
-                            <div class="panel-title">Logo </div>
-                            <div class="panel-options">
-                                <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
-                                <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
-                            </div>
-                        </div>
-                        <div class="content-box-large box-with-header">
-                            <form method="post" action="#" enctype="multipart/form-data">
-                                <input type="hidden" name="MAX_FILE_SIZE" value="204800">
-                                <label class="btn btn-warning btn-xs">
-                                    Choisir un fichier <input name="logo" type="file"  style="display: none">
-                                </label>
-                            </form>
-                        </div>
+                <div class="content-box-header">
+                    <div class="panel-title">Info Agence</div>
+                    <div class="panel-options">
+                        <a href="#" data-toggle="modal" data-target="#ModalInfo"><i class="glyphicon glyphicon-cog"></i></a>
+                    </div>
+                </div>
+                <div class="content-box-large box-with-header">
+                    <div class="panel-body">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Email</th>
+                                <th>Téléphone</th>
+                                <th>Adresse</th>
+                                <th>Lien google map</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><?= $infos['email'] ?></td>
+                                <td><?= $infos['telephone'] ?></td>
+                                <td><?= $infos['numero']." ".$infos['rue']."<br>".$infos['cp']." ".$infos['ville'] ?></td>
+                                <td><?= $infos['lien_map'] ?></td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-     
+
+            <!-- logo -->
+            <div class="col-md-6">
+                <div class="content-box-header">
+                    <div class="panel-title">Logo </div>
+                    <div class="panel-options">
+                        <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+                        <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
+                    </div>
+                </div>
+                <div class="content-box-large box-with-header">
+                    <form method="post" action="#" enctype="multipart/form-data">
+                        <div class="file-preview"></div>
+                        <input type="hidden" name="MAX_FILE_SIZE" value="204800">
+                        <label class="btn btn-warning btn-xs">
+                            Choisir un fichier <input name="logo" type="file" id="ImgInp" style="display: none">
+                        </label>
+                        <input type="submit" name="submitLogo">
+                        <img id="blah" src="#" alt="your image" />
+                        <a href="assets/img/logo.<?php $extensions_valides ?>"><img src="../assets/img/miniatures/logo.<?php $extensions_valides ?>"></a>
+                    </form>
+                </div>
+            </div>
         </div>
 
-<<<<<<< HEAD
-        <!-- Modal info agence -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-=======
+        <div class="row">
+            <div class="col-md-12 panel-warning">
+                <div class="content-box-header panel-heading">
+                    <div class="panel-title ">Photo fond Accueil</div>
+                    <div class="panel-options">
+                        <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+                        <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
+                    </div>
+                </div>
+                <div class="content-box-large box-with-header">
+                    Pellentesque luctus quam quis consequat vulputate. Sed sit amet diam ipsum. Praesent in pellentesque diam, sit amet dignissim erat. Aliquam erat volutpat. Aenean laoreet metus leo, laoreet feugiat enim suscipit quis. Praesent mauris mauris, ornare vitae tincidunt sed, hendrerit eget augue. Nam nec vestibulum nisi, eu dignissim nulla.
+                    <br /><br />
+                </div>
+            </div>
+        </div>
+    </div>
+
         <!-- Modal -->
         <div class="modal fade" id="ModalInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
->>>>>>> c21f177f89960d10e1273d1fcc56031b92f958fb
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -240,67 +219,80 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
                         <button type="submit" class="btn btn-primary" name="submitInfo">Enregistrer</button>
-<<<<<<< HEAD
                     </div>
                     </form>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
         <!-- /Modal info agence -->
-        
+
         <!-- Modal horaire -->
         <div class="modal fade" id="modalhoraire" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">Modifier les Horaires</h4>
+                        <h4 class="modal-title" id="myModalLabel">Ajouter une horaire</h4>
                     </div>
                     <div class="modal-body">
                         <form class="form-horizontal" method="post" action="#">
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Date/jour/durée</label>
+                                <label for="" class="col-sm-2 control-label">Date /jour /durée</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" placeholder="Email" name="email" value="<?= $infoH['jour'] ?>">
+                                    <input type="text" class="form-control" placeholder="Jour" name="jour">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 control-label">Heure</label>
+                                <label for="" class="col-sm-2 control-label">Heure</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" placeholder="Téléphone" name="tel" value="<?= $infoH['heure'] ?>">
+                                    <input type="text" class="form-control" placeholder="Heure" name="heure">
                                 </div>
                             </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-                        <button type="submit" class="btn btn-primary" name="submitInfo">Enregistrer</button>
-=======
->>>>>>> c21f177f89960d10e1273d1fcc56031b92f958fb
+                        <button type="submit" class="btn btn-primary" name="addHoraire">Enregistrer</button>
                     </div>
                     </form>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
         <!-- /Modal -->
-        <div class="row">
-            <div class="col-md-12 panel-warning">
-                <div class="content-box-header panel-heading">
-                    <div class="panel-title ">Photo fond Accueil</div>
 
-                    <div class="panel-options">
-                        <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
-                        <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
+        <!-- Modal modification horaire -->
+        <div class="modal fade" id="modalHoraireEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Modifier cet horaire</h4>
                     </div>
-                </div>
-                <div class="content-box-large box-with-header">
-                    Pellentesque luctus quam quis consequat vulputate. Sed sit amet diam ipsum. Praesent in pellentesque diam, sit amet dignissim erat. Aliquam erat volutpat. Aenean laoreet metus leo, laoreet feugiat enim suscipit quis. Praesent mauris mauris, ornare vitae tincidunt sed, hendrerit eget augue. Nam nec vestibulum nisi, eu dignissim nulla.
-                    <br /><br />
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" method="post" action="#">
+                            <div class="form-group">
+                                <label for="" class="col-sm-2 control-label">Date /jour /durée</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" placeholder="Jour" name="jour"">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-2 control-label">Heure</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" placeholder="Heure" name="heure"">
+                                </div>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-primary" name="addHoraire">Enregistrer</button>
+                    </div>
+                    </form>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <!-- /Modal -->
+
+    +
     <?php
 } else{
     header("Location:login.php");
