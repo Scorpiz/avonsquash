@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer id="footer" class="sm-padding bg-dark">
+<footer id="footer" class="footer-padding bg-dark">
 
     <!-- Container -->
     <div class="container">
@@ -8,12 +8,6 @@
         <div class="row">
 
             <div class="col-md-12">
-
-                <!-- footer logo -->
-                <div class="footer-logo">
-                    <a href="index.html"><img src="img/logo-alt.png" alt="logo"></a>
-                </div>
-                <!-- /footer logo -->
 
                 <!-- footer follow -->
                 <ul class="footer-follow">
@@ -38,7 +32,7 @@
 <!-- /Footer -->
 
 <!-- Back to top -->
-<div id="back-to-top"></div>
+<div id="back-to-top"><i class="fas fa-angle-up"></i></div>
 <!-- /Back to top -->
 
 <!-- Preloader -->

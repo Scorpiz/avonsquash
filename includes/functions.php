@@ -1,26 +1,22 @@
 <?php
-function authentification(){
-    if(!isset($_SESSION['connecte']))
-        header("Location:login.php");
-}
 
-function viewStatus(){
+function viewStatus($is_pro){
     global $bdd;
-    $req = $bdd->prepare("SELECT * FROM statut");
+    $req = $bdd->prepare("SELECT * FROM statut WHERE is_pro = ".$is_pro);
     $req->execute();
     return $req->fetchAll();
 }
 
-function viewFormule($is_del_f, $is_active, $is_info){
+function viewFormule($is_active, $is_info){
     global $bdd;
-    $req = $bdd->prepare("SELECT * FROM formule WHERE can_be_deleted ='".$is_del_f."' AND is_active ='".$is_active."' AND is_info ='".$is_info."' ORDER BY can_be_deleted");
+    $req = $bdd->prepare("SELECT * FROM formule WHERE is_active ='".$is_active."' AND is_info ='".$is_info."' ORDER BY can_be_deleted");
     $req->execute();
     return $req->fetchAll();
 }
 
 function viewTarif($id_f){
     global $bdd;
-    $req = $bdd->prepare("SELECT * FROM tarif t, statut s WHERE t.id_s = s.id_s AND  t.id_f = '".$id_f."' ORDER BY s.libelle_s, can_be_deleted");
+    $req = $bdd->prepare("SELECT * FROM tarif t, statut s WHERE t.id_s = s.id_s AND t.id_f = '".$id_f."' ORDER BY s.libelle_s, can_be_deleted");
     $req->execute();
     return $req->fetchAll();
 }

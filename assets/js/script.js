@@ -17,4 +17,16 @@ $(document).ready(function(){
     setInterval(nextBackground, 10000);
 
     header.css('background-image', backgrounds[0]);
+
+
+    $('.statut-menu').on('click', function(){
+        idStatut = $(this).attr('data-statut');
+        $('.statut-menu').removeClass('selected');
+        $(this).addClass('selected');
+        $('.pricing-enfant').show();
+        $('.price-content').css('display', 'none');
+        $('.statut-' + idStatut).css('display', 'block');
+        console.log(idStatut);
+
+    });
 });

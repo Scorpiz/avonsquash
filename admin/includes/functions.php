@@ -41,6 +41,7 @@ function updateInfos($email, $tel, $num, $rue, $cp, $ville, $lien){
         $lien
     ));
 }
+
 function viewHoraire(){
     global $bdd;
     $req = $bdd->prepare("SELECT * FROM date, horaire WHERE date.id_d = horaire.id_d");
@@ -72,25 +73,27 @@ function viewInfoAdmin(){
     $req->execute();
     return $req->fetch();
 }
+
 function viewChangFormule(){
     global $bdd;
     $req = $bdd->prepare("SELECT * FROM formule");
     $req->execute();
     return $req->fetchAll();
 }
+
 function viewChangTarif() {
     global $bdd;
     $req = $bdd->prepare("SELECT * FROM tarif");
     $req->execute();
     return $req->fetchAll();
 }
+
 function addHeure($heure, $jour){
     global $bdd;
     $req = $bdd->prepare("INSERT INTO horaire(heure, id_d) VALUES('".$heure."', (SELECT id_d FROM date WHERE jour ='".$jour."'))");
     $req->execute();
     return $req->fetchAll();
 }
-
 
 function deleteHoraire($id_d){
     global $bdd;

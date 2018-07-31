@@ -34,11 +34,7 @@ catch(Exception $e)
     <link type="text/css" rel="stylesheet" href="assets/css/magnific-popup.css" />
 
     <!-- Font Awesome Icon -->
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-
-    <!-- Slick carousel -->
-    <link rel="stylesheet" type="text/css" href="assets/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="assets/slick/slick-theme.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="assets/css/style.css" />
