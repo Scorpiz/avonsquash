@@ -1,4 +1,5 @@
-<?php
+<?php 
+/* Affichage Statut, Formule, Tarif, Info Agence*/ 
 function viewStatus(){
     global $bdd;
     $req = $bdd->prepare("SELECT * FROM statut");
@@ -26,7 +27,7 @@ function viewAgenceInfos(){
     $req->execute();
     return $req->fetch();
 }
-
+ /* changement info agence */ 
 function updateInfos($email, $tel, $num, $rue, $cp, $ville, $lien){
     global $bdd;
     $req = $bdd->prepare("UPDATE agence SET email = ?, telephone = ?, numero = ?, rue = ?, cp = ?, ville = ?, lien_map = ?");
@@ -41,6 +42,7 @@ function updateInfos($email, $tel, $num, $rue, $cp, $ville, $lien){
         $lien
     ));
 }
+/* Affichage horraire + update, delete ajout */ 
 function viewHoraire(){
     global $bdd;
     $req = $bdd->prepare("SELECT * FROM date, horaire WHERE date.id_d = horaire.id_d");
@@ -66,6 +68,22 @@ function addJour($jour){
     return $req->fetchAll();
 }
 
+function addHeure($heure, $jour){
+    global $bdd;
+    $req = $bdd->prepare("INSERT INTO horaire(heure, id_d) VALUES('".$heure."', (SELECT id_d FROM date WHERE jour ='".$jour."'))");
+    $req->execute();
+    return $req->fetchAll();
+}
+
+
+function deleteHoraire($id_d){
+    global $bdd;
+    $req = $bdd->prepare("DELETE FROM horaire WHERE id_d =".$id_d);
+    $req->execute();
+    $req2 = $bdd->prepare("DELETE FROM date WHERE id_d =".$id_d);
+    $req2->execute();
+}
+/* Affichage info admin, changement tarif partie admin */ 
 function viewInfoAdmin(){
     global $bdd;
     $req = $bdd->prepare("SELECT * FROM users");
@@ -84,21 +102,8 @@ function viewChangTarif() {
     $req->execute();
     return $req->fetchAll();
 }
-function addHeure($heure, $jour){
-    global $bdd;
-    $req = $bdd->prepare("INSERT INTO horaire(heure, id_d) VALUES('".$heure."', (SELECT id_d FROM date WHERE jour ='".$jour."'))");
-    $req->execute();
-    return $req->fetchAll();
-}
+/* Partenaire */ 
 
-
-function deleteHoraire($id_d){
-    global $bdd;
-    $req = $bdd->prepare("DELETE FROM horaire WHERE id_d =".$id_d);
-    $req->execute();
-    $req2 = $bdd->prepare("DELETE FROM date WHERE id_d =".$id_d);
-    $req2->execute();
-}
 function viewPartenaire(){
     global $bdd;
     $req = $bdd->prepare("SELECT * FROM partenaire");
