@@ -910,6 +910,7 @@ header {
     cursor: pointer;
 }
 
+
 .price-content{
     padding-top: 38px;
     padding-left: 30px;
@@ -1899,17 +1900,10 @@ header {
   }
 }
 
+.carousel {
+    max-width:1200px;
 
-.carousel{
-    width: 90%;
-    margin:0px auto;
-}
 
-.slick-slide{
-    margin:10px;
-}
-.slick-slide img{
-    width:100%;
 }
 
 /*------------------------------------*\

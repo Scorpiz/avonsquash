@@ -35,10 +35,10 @@ include "includes/functions.php";
 
             <!--  Main navigation  -->
             <ul class="main-nav nav navbar-nav navbar-right">
-                <li><a href="#home">Accueil</a></li>
+                <li><a href="index.php">Accueil</a></li>
                 <li><a href="#blog">News</a></li>
                 <li><a href="#pricing">Tarifs</a></li>
-                <li><a href="#">Espace pro</a></li>
+                <li><a href="espacepro.php">Espace pro</a></li>
                 <li><a href="https://resa-avonsquash.deciplus.pro/">Réservez</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -58,6 +58,7 @@ include "includes/functions.php";
                     <div class="home-content">
                         <h1 class="main-color">SQUASH & MORE</h1>
                         <p class="white-text">Le plus australien des clubs de squash français.</p><br>
+                        <h4><a href="apropos.php" class="btn btn-warning">Notre histoire</a></h4> <br>
                         <h3 class="main-color">Horaires d'ouverture</h3>
                         <?php $horaires = viewhoraire();
                         foreach ($horaires as $key=>$horaire) {
@@ -262,11 +263,10 @@ include "includes/functions.php";
             <!-- contact -->
             <div class="col-sm-4">
                 <div class="contact">
-                    <a href="<?= $infos['lien_map']?>">
-                        <i class="fa fa-map-marker"></i>
-                        <h3>Adresse</h3>
-                        <p><?= $infos['numero']." ".$infos['rue']."<br>".$infos['cp']." ".$infos['ville'] ?></p>
-                    </a>
+                    <i class="fa fa-map-marker"></i>
+                    <h3>Adresse</h3>
+                    <p><?= $infos['numero']." ".$infos['rue']."<br>".$infos['cp']." ".$infos['ville'] ?></p>
+                    <a href="<?= $infos['lien_map']?>" class="btn btn-warning">Lien Google Map</a>
                 </div>
             </div>
             <!-- /contact -->

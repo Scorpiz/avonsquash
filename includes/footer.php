@@ -9,12 +9,18 @@
 
             <div class="col-md-12">
 
+                <!-- footer logo
+                <div class="footer-logo">
+                    <a href="index.html"><img class="" src="assets/img/logo.<?php $extensions_valides ?>" alt="logo"></a>
+                </div>
+                 /footer logo -->
+
                 <!-- footer follow -->
                 <ul class="footer-follow">
-                    <li><a href="https://www.facebook.com/AvonSquash/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="https://www.facebook.com/AvonSquash/" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
                   <!--  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                     <li><a href="#"><i class="fa fa-google-plus"></i></a></li> -->
-                    <li><a href="https://www.instagram.com/avonsquash/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                    <li><a href="https://www.instagram.com/avonsquash/" target="_blank"><i class="fab fa-instagram"></i></a></li>
               <!--      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                     <li><a href="#"><i class="fa fa-youtube"></i></a></li> -->
                 </ul>

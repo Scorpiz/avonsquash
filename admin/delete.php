@@ -19,7 +19,13 @@ switch($_GET['type']){
         deleteHoraire($id_d);
         header("location:admin.php");
         break;
+    case "delpar":
+        $id_part = $_GET["id"];
+        deletePartenaire($id_part);
+        header("location:espacepart.php");
+        break;  
 }
+
 ?>
 
 
