@@ -9,8 +9,7 @@
                 <div class="content-box-hearder panel-heading">
                     <div class="panel-title">Changement Formule</div>
                     <div class="panel-options">
-                        <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
-                        <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
+                        <a href="#" data-rel="reload"><i class="fas fa-plus-circle"></i></a>
                     </div>
                 </div>
                 <div class="panel-body">
@@ -20,6 +19,8 @@
                                 <th>Titre formule</th>
                                 <th>Sous titre formule</th>
                                 <th>Afficher ou Masquer</th>
+                                <th>Supprimer</th>
+                                <th>Modifier</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,6 +33,8 @@
                                 <?php } ?>
                                 <td><?= $ChangFormule['sous_titre']?></td>
                                 <td></td>
+                                <td><button type="submit" class="btn btn-danger" name="">Supprimer</button></td>
+                                <td><button type="submit" class="btn btn-success" name="">Modifier</button></td>
                             </tr> <?php } ?>
                         </tbody>
                     </table>
@@ -49,8 +52,7 @@
 		  				<div class="content-box-hearder panel-heading">
 							<div class="panel-title">Changement Statut</div>
 							<div class="panel-options">
-								<a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
-								<a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
+								<a href="#" data-rel="reload"><i class="fas fa-plus-circle"></i></a>
 							</div>
 						</div>
 		  				<div class="panel-body">
@@ -82,8 +84,7 @@
 							<div class="panel-title">Changement Tarif</div>
 							
 							<div class="panel-options">
-								<a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
-								<a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
+								<a href="#" data-rel="reload"><i class="fas fa-plus-circle"></i></a>
 							</div>
 						</div>
 		  				<div class="panel-body">

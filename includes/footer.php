@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer id="footer" class="sm-padding bg-dark">
+<footer id="footer" class="footer-padding bg-dark">
 
     <!-- Container -->
     <div class="container">
@@ -9,18 +9,18 @@
 
             <div class="col-md-12">
 
-                <!-- footer logo -->
+                <!-- footer logo 
                 <div class="footer-logo">
-                    <a href="index.html"><img src="img/logo-alt.png" alt="logo"></a>
+                    <a href="index.html"><img class="" src="assets/img/logo.<?php $extensions_valides ?>" alt="logo"></a>
                 </div>
-                <!-- /footer logo -->
+                 /footer logo -->
 
                 <!-- footer follow -->
                 <ul class="footer-follow">
-                    <li><a href="https://www.facebook.com/AvonSquash/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="https://www.facebook.com/AvonSquash/" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
                   <!--  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                     <li><a href="#"><i class="fa fa-google-plus"></i></a></li> -->
-                    <li><a href="https://www.instagram.com/avonsquash/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                    <li><a href="https://www.instagram.com/avonsquash/" target="_blank"><i class="fab fa-instagram"></i></a></li>
               <!--      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                     <li><a href="#"><i class="fa fa-youtube"></i></a></li> -->
                 </ul>
@@ -38,7 +38,7 @@
 <!-- /Footer -->
 
 <!-- Back to top -->
-<div id="back-to-top"></div>
+<div id="back-to-top"><i class="fas fa-angle-up"></i></div>
 <!-- /Back to top -->
 
 <!-- Preloader -->

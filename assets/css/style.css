@@ -136,7 +136,10 @@ ul, ol {
     padding-top: 60px;
     padding-bottom: 60px;
 }
+.footer-padding {
+    padding-top: 40px;
 
+}
 
 /* --  background section  -- */
 
@@ -1733,11 +1736,6 @@ header {
   	cursor: pointer;
 }
 
-#back-to-top:after {
-    content: "\f106";
-    font-family: 'FontAwesome';
-}
-
 #back-to-top:hover {
     opacity: 0.8;
 }
@@ -1828,17 +1826,10 @@ header {
   }
 }
 
-
-.carousel{
-    width: 90%;
-    margin:0px auto;
-}
-
-.slick-slide{
-    margin:10px;
-}
-.slick-slide img{
-    width:100%;
+.carousel {
+    max-width:1200px;
+    
+    
 }
 
 /*------------------------------------*\
