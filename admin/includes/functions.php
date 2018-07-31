@@ -102,21 +102,21 @@ function deleteHoraire($id_d){
     $req2 = $bdd->prepare("DELETE FROM date WHERE id_d =".$id_d);
     $req2->execute();
 }
+
 function viewPartenaire(){
     global $bdd;
     $req = $bdd->prepare("SELECT * FROM partenaire");
     $req ->execute();
     return $req->fetchAll();
 }
+
 function addPartenaire($part, $com){
     global $bdd;
-    $req = $bdd->prepare("INSERT INTO partenaire(partenaire, commentaire) VALUES(:partenaire,:commentaire)");
-    $req->execute(array(
-        ':partenaire' => $part,
-        ':commentaire'=> $com
-    ));
+    $req = $bdd->prepare("INSERT INTO partenaire(partenaire, commentaire) VALUES('".$part."', '".$com."')");
+    $req->execute();
     return $req->fetchAll();
 }
+
 function deletePartenaire($id_part) {
     global $bdd;
     $req = $bdd->prepare("DELETE FROM partenaire WHERE id_part=".$id_part);

@@ -143,9 +143,9 @@ include "includes/functions.php";
             foreach ($statuts as $keyStatut=>$statut) {
                 if ($statut['libelle_s'] != 'Aucun statut'){?>
                     <div class="col-sm-4">
-                        <div class="pricing">
+                        <div class="pricing" data-statut="<?= $statut['id_s'] ?>">
                             <div class="price-head">
-                                <span class="price-title bouton statut-menu" data-statut="<?= $statut['id_s'] ?>"><?= $statut['libelle_s'] ?></span>
+                                <span class="price-title bouton statut-menu"><?= $statut['libelle_s'] ?></span>
                             </div>
                         </div>
                     </div>

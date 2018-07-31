@@ -910,17 +910,13 @@ header {
     cursor: pointer;
 }
 
-
 .price-content{
     padding-top: 38px;
     padding-left: 30px;
 }
 
-.pricing .selected {
+.pricing.selected {
     background-color: #1C1D21;
-    -webkit-border-radius: 60px;
-    -moz-border-radius: 60px;
-    border-radius: 60px;
     cursor: pointer;
 }
 
@@ -960,7 +956,7 @@ header {
     margin-right: 10px;
 }
 
-.pricing .selected .price-title .bouton {
+.pricing .price-title .bouton .selected  {
     color: #f39c12;
 }
 
