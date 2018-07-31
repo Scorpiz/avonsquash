@@ -176,39 +176,22 @@ include "includes/functions.php";
                             <span class="price-title"><?= $formule0['titre'] ?></span>
                             <p class="subtitle"><?= $formule0['sous_titre'] ?></p>
                         </div>
-                        <?php foreach ($tarifs0 as $keyTarif=>$tarif0) {
-                            if($keyTarif == 0){ ?>
-                                <ul class="price-content statut-<?= $tarif0['id_s'] ?>">
-                                    <li>
-                                        <p class="description"><?= $tarif0['libelle_ta'] ?></p>
-                                        <?php if(!empty($tarif0['prix'])){ ?>
-                                            <p class="price-amount"><?= $tarif0['prix'] ?> €</p>
-                                        <?php } ?>
-                                        <p class="comment"><?= $tarif0['commentaire'] ?></p>
-                                    </li>
-                                </ul>
-                            <?php }else if ($tarifs0[$keyTarif - 1]['libelle_s'] == $tarif0['libelle_s']){ ?>
-                                <ul class="price-content statut-<?= $tarif0['id_s'] ?>">
-                                    <li>
-                                        <p class="description"><?= $tarif0['libelle_ta'] ?></p>
-                                        <?php if(!empty($tarif0['prix'])){ ?>
-                                            <p class="price-amount"><?= $tarif0['prix'] ?> €</p>
-                                        <?php } ?>
-                                        <p class="comment"><?= $tarif0['commentaire'] ?></p>
-                                    </li>
-                                </ul>
-                            <?php }else{ ?>
-                                <ul class="price-content statut-<?= $tarif0['id_s'] ?>">
-                                    <li>
-                                        <p class="description"><?= $tarif0['libelle_ta'] ?></p>
-                                        <?php if(!empty($tarif0['prix'])){ ?>
-                                            <p class="price-amount"><?= $tarif0['prix'] ?> €</p>
-                                        <?php } ?>
-                                        <p class="comment"><?= $tarif0['commentaire'] ?></p>
-                                    </li>
-                                </ul>
-                            <?php }
-                        }?>
+                        <?php foreach ($tarifs0 as $keyTarif=>$tarif0) { ?>
+                            <ul class="price-content statut-<?= $tarif0['id_s'] ?>">
+                                <?php if($keyTarif != 0 && $tarifs0[$keyTarif - 1]['libelle_s'] == $tarif0['libelle_s']){ 
+                                
+                                 } else if($tarif0['libelle_s'] !== 'Aucun statut'){ ?>
+                                    <p style="color: white;"> <?= $tarif0['libelle_s'] ?></p>
+                                <?php } ?>
+                                <li>
+                                    <p class="description"><?= $tarif0['libelle_ta'] ?></p>
+                                    <?php if(!empty($tarif0['prix'])){ ?>
+                                        <p class="price-amount"><?= $tarif0['prix'] ?> €</p>
+                                    <?php } ?>
+                                    <p class="comment"><?= $tarif0['commentaire'] ?></p>
+                                </li>
+                            </ul>
+                       <?php } ?>
                     </div>
                 </div>
             <?php } ?>
