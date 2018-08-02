@@ -139,46 +139,46 @@ include "includes/functions.php";
             </div>
             <!-- /Section header -->
 
-            <!-- tarif -->
-            <?php $formules = viewFormule(0, 1, 0);
-            foreach ($formules as $key=>$formule) {
-                $tarifs = viewTarif($formule['id_f']); ?>
-                <div class="col-sm-12">
-                    <div class="pricing">
-                        <div class="price-head">
-                            <?php if(!empty($formule['titre'] || $formule['sous_titre'])){ ?>
-                                <span class="price-title"><?= $formule['titre'] ?></span>
-                                <p class="subtitle"><?= $formule['sous_titre'] ?></p>
-                            <?php } ?>
+            <?php $statuts = viewStatus(0);
+            foreach ($statuts as $keyStatut=>$statut) {
+                if ($statut['libelle_s'] != 'Aucun statut'){?>
+                    <div class="col-sm-4">
+                        <div class="pricing" data-statut="<?= $statut['id_s'] ?>">
+                            <div class="price-head">
+                                <span class="price-title bouton statut-menu"><?= $statut['libelle_s'] ?></span>
+                            </div>
                         </div>
-                        <?php foreach ($tarifs as $keyTarif=>$tarif) {?>
-                            <ul class="price-content">
-                                <li>
-                                    <p class="description"><?= $tarif['libelle_ta'] ?></p>
-                                    <p class="price-amount"><?= $tarif['prix'] ?> €</p>
-                                    <p class="comment"><?= $tarif['commentaire'] ?></p>
-                                </li>
-                            </ul>
-                        <?php } ?>
+                    </div>
+                <?php }
+            } ?>
+            <div class="col-sm-6">
+                <div class="pricing">
+                    <div class="price-head">
+                        <span class="price-title bouton statut-menu">Espace pro</span>
                     </div>
                 </div>
-            <?php } ?>
+            </div>
+            <div class="col-sm-6">
+                <div class="pricing">
+                    <div class="price-head">
+                        <span class="price-title bouton statut-menu">Informations complémentaires</span>
+                    </div>
+                </div>
+            </div>
 
-            <?php $formules0 = viewFormule(1, 1, 0);
+            <!--tarif-->
+            <?php $formules0 = viewFormule(1, 0);
             foreach ($formules0 as $key=>$formule0) {
                 $tarifs0 = viewTarif($formule0['id_f']); ?>
                 <div class="col-sm-6">
-                    <div class="pricing">
+                    <div class="pricing-enfant">
                         <div class="price-head">
                             <span class="price-title"><?= $formule0['titre'] ?></span>
                             <p class="subtitle"><?= $formule0['sous_titre'] ?></p>
                         </div>
                         <?php foreach ($tarifs0 as $keyTarif=>$tarif0) {
                             if($keyTarif == 0){ ?>
-                                <ul class="price-content">
-                                    <?php if($tarif0['libelle_s'] != 'Aucun statut'){ ?>
-                                        <h2 class="title-status"><?= $tarif0['libelle_s'] ?></h2>
-                                    <?php } ?>
+                                <ul class="price-content statut-<?= $tarif0['id_s'] ?>">
                                     <li>
                                         <p class="description"><?= $tarif0['libelle_ta'] ?></p>
                                         <?php if(!empty($tarif0['prix'])){ ?>
@@ -188,7 +188,7 @@ include "includes/functions.php";
                                     </li>
                                 </ul>
                             <?php }else if ($tarifs0[$keyTarif - 1]['libelle_s'] == $tarif0['libelle_s']){ ?>
-                                <ul class="price-content">
+                                <ul class="price-content statut-<?= $tarif0['id_s'] ?>">
                                     <li>
                                         <p class="description"><?= $tarif0['libelle_ta'] ?></p>
                                         <?php if(!empty($tarif0['prix'])){ ?>
@@ -198,10 +198,7 @@ include "includes/functions.php";
                                     </li>
                                 </ul>
                             <?php }else{ ?>
-                                <ul class="price-content">
-                                    <?php if($tarif0['libelle_s'] != 'Aucun statut'){ ?>
-                                        <h2 class="title-status"><?= $tarif0['libelle_s'] ?></h2>
-                                    <?php } ?>
+                                <ul class="price-content statut-<?= $tarif0['id_s'] ?>">
                                     <li>
                                         <p class="description"><?= $tarif0['libelle_ta'] ?></p>
                                         <?php if(!empty($tarif0['prix'])){ ?>
@@ -211,62 +208,12 @@ include "includes/functions.php";
                                     </li>
                                 </ul>
                             <?php }
-                            } ?>
+                        }?>
                     </div>
                 </div>
             <?php } ?>
 
-            <!-- /tarif -->
 
-        </div>
-        <!-- Row -->
-
-
-        <!-- Row -->
-        <div class="row md-padding">
-
-            <!-- Informations complémentaires -->
-
-            <!-- Section header -->
-            <div class="section-header text-center">
-                <h2 class="title">Informations complémentaires</h2>
-            </div>
-            <!-- /Section header -->
-
-            <?php $formulesInfo = viewFormule(1, 1, 1);
-            foreach ($formulesInfo as $key=>$formuleInfo) {
-                $tarifsInfo = viewTarif($formuleInfo['id_f']); ?>
-                <div class="col-sm-4">
-                    <div class="pricing">
-                        <div class="price-head">
-                            <?php if(!empty($formuleInfo['titre'] || $formuleInfo['sous_titre'])){ ?>
-                                <span class="price-title"><?= $formuleInfo['titre'] ?></span>
-                                <p class="subtitle"><?= $formuleInfo['sous_titre'] ?></p>
-                            <?php } ?>
-                        </div>
-                        <?php foreach ($tarifsInfo as $keyTarifInfo=>$tarifInfo) {
-                            if(!empty($tarifInfo['prix'])){ ?>
-                            <ul class="info-content-priced">
-                                <li>
-                                    <p class="description"><?= $tarifInfo['libelle_ta'] ?></p>
-                                    <p class="price-amount"><?= $tarifInfo['prix'] ?> €</p>
-                                    <p class="comment"><?= $tarifInfo['commentaire'] ?></p>
-                                </li>
-                            </ul>
-                            <?php }else{ ?>
-                                <ul class="info-content">
-                                    <li>
-                                        <p class="description"><?= $tarifInfo['libelle_ta'] ?></p>
-                                        <p class="comment"><?= $tarifInfo['commentaire'] ?></p>
-                                    </li>
-                                </ul>
-                            <?php }
-                             } ?>
-                    </div>
-                </div>
-            <?php } ?>
-
-            <!-- /Informations complémentaires -->
         </div>
         <!-- Row -->
 
@@ -344,7 +291,71 @@ include "includes/functions.php";
 
 </div>
 <!-- /Contact -->
+        
+<!--Espace partenaire -->
+<div id="partenaire" class="section md-padding bg-grey">
 
+    <!-- Container -->
+    <div class="container">
+
+        <!-- Row -->
+        <div class="row">
+
+            <!-- Section-header -->
+            <div class="section-header text-center">
+                <h2 class="title">Nos partenaires</h2>
+            </div>
+            <!-- /Section-header -->
+<!-- Listing partenaire -->
+            <?php $part = viewPartenaire();
+            foreach ($part as $key=>$par) { ?>
+            <div class="col-sm-4">
+                <div class="partenaire">
+                    <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/e/ea/Mcdonalds_France_2009_logo.svg/853px-Mcdonalds_France_2009_logo.svg.png">
+                    <h3><?= $par['partenaire']?></h3>
+                    <p><?= $par['commentaire']?></p>
+                </div>
+            </div><?php } ?>
+<!-- /listing partenaire -->
+        </div>
+<!-- Row -->
+    </div>
+<!-- Container -->
+</div>
+<!--/Espace partenaire-->
 <?php
 include "includes/footer.php";
 ?>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        

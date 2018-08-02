@@ -136,9 +136,9 @@ ul, ol {
     padding-top: 60px;
     padding-bottom: 60px;
 }
-.footer-padding {
-    padding-top: 40px;
 
+.footer-padding {
+    padding-top:40px;
 }
 
 /* --  background section  -- */
@@ -904,13 +904,20 @@ header {
     background-color: #FFF;
     z-index: 11;
     margin: 15px 0px;
+    -webkit-border-radius: 60px;
+    -moz-border-radius: 60px;
+    border-radius: 60px;
+    cursor: pointer;
 }
-
 
 .price-content{
     padding-top: 38px;
     padding-left: 30px;
+}
 
+.pricing.selected {
+    background-color: #1C1D21;
+    cursor: pointer;
 }
 
 .pricing::after {
@@ -920,10 +927,12 @@ header {
     left: 0;
     right: 0;
     top: 0;
-    height: 0%;
+    height: 0;
     z-index: -1;
-    -webkit-transition: 0.2s height;
-    transition: 0.2s height;
+    -webkit-border-radius: 60px;
+    -moz-border-radius: 60px;
+    border-radius: 60px;
+    cursor: pointer;
 }
 
 .pricing:hover:after {
@@ -943,57 +952,16 @@ header {
     -webkit-transition: 0.2s color;
     transition: 0.2s color;
     font-size: 1.2em;
-
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
-.pricing:hover .price-title {
+.pricing .price-title .bouton .selected  {
     color: #f39c12;
 }
 
-.pricing .price {
-    position: relative;
-    width: 140px;
-    height: 140px;
-    line-height: 140px;
-    margin: auto;
-    border-radius: 50%;
-    border: 2px solid #f39c12;
-}
-
-.pricing .price h3 {
-  font-size: 42px;
-  margin: 0px;
-  -webkit-transition: 0.2s color;
-  transition: 0.2s color;
-  -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-          transform: translateY(-50%);
-  top: 50%;
-  position: absolute;
-  left: 0;
-  right: 0;
-}
-
-.pricing:hover .price h3 {
-    color: #fff;
-}
-
-.pricing .duration {
-    display: block;
-    font-size: 14px;
-    text-transform: uppercase;
-    color: #10161A;
-    -webkit-transition: 0.2s color;
-    transition: 0.2s color;
-}
-
-.pricing:hover .duration {
-    color: #fff;
-}
-
-.pricing .price-btn {
-    padding-top: 20px;
-    padding-bottom: 40px;
+.pricing:hover .price-title{
+    color: #f39c12;
 }
 
 .pricing:hover .title-status{
@@ -1036,6 +1004,106 @@ header {
     padding-right: 10px
 }
 
+
+.pricing-enfant {
+    position: relative;
+    border: 1px solid #EEE;
+    z-index: 11;
+    margin: 15px 0px;
+    background-color: #1C1D21;
+    display: none;
+}
+
+.pricing-enfant::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 0%;
+    z-index: -1;
+}
+
+.pricing-enfant:hover:after {
+    height: 100%;
+}
+
+.pricing-enfant .price-head {
+    position: relative;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.pricing-enfant .price-title {
+    display: block;
+    padding: 40px 0px 20px;
+    text-transform: uppercase;
+    -webkit-transition: 0.2s color;
+    transition: 0.2s color;
+    font-size: 1.2em;
+
+}
+
+.pricing-enfant .price-title {
+    color: #f39c12;
+}
+
+.pricing-enfant .price {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    line-height: 140px;
+    margin: auto;
+    border-radius: 50%;
+    border: 2px solid #f39c12;
+}
+
+.pricing-enfant .price h3 {
+    font-size: 42px;
+    margin: 0px;
+    -webkit-transition: 0.2s color;
+    transition: 0.2s color;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    top: 50%;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.pricing-enfant .price h3 {
+    color: #fff;
+}
+
+.pricing-enfant .duration {
+    display: block;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #10161A;
+    -webkit-transition: 0.2s color;
+    transition: 0.2s color;
+}
+
+.pricing-enfant .duration {
+    color: #fff;
+}
+
+.pricing-enfant .price-btn {
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+.pricing-enfant .title-status{
+    color: #f39c12;
+}
+.pricing-enfant .description {
+    color: #fff;
+}
+
+.pricing-enfant .price-amount{
+    color: #f39c12;
+}
 /*------------------------------------*\
 	Testimonial
 \*------------------------------------*/
@@ -1522,6 +1590,20 @@ header {
 .contact-form .input:nth-child(2) {
     margin-left: 15px;
 }
+/*------------------------------------\
+    Partenaire
+*------------------------------------*/
+
+.partenaire {
+    margin: 15px 0px;
+    text-align: center;
+}
+
+.partenaire img {
+width: 130px;
+height: auto;
+
+}
 
 /*------------------------------------*\
 	Footer
@@ -1736,6 +1818,8 @@ header {
   	cursor: pointer;
 }
 
+
+
 #back-to-top:hover {
     opacity: 0.8;
 }
@@ -1828,8 +1912,8 @@ header {
 
 .carousel {
     max-width:1200px;
-    
-    
+
+
 }
 
 /*------------------------------------*\

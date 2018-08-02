@@ -9,7 +9,7 @@
 
             <div class="col-md-12">
 
-                <!-- footer logo 
+                <!-- footer logo
                 <div class="footer-logo">
                     <a href="index.html"><img class="" src="assets/img/logo.<?php $extensions_valides ?>" alt="logo"></a>
                 </div>

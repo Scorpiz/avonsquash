@@ -1,4 +1,7 @@
 <?php 
+session_start();
+if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
+
     include "includes/header.php"; ?>
 <div class="col-md-10">
     <div class="row">
@@ -18,7 +21,6 @@
                             <tr>
                                 <th>Titre formule</th>
                                 <th>Sous titre formule</th>
-                                <th>Afficher ou Masquer</th>
                                 <th>Supprimer</th>
                                 <th>Modifier</th>
                             </tr>
@@ -32,7 +34,6 @@
                                 <td> Aucun titre </td>
                                 <?php } ?>
                                 <td><?= $ChangFormule['sous_titre']?></td>
-                                <td></td>
                                 <td><button type="submit" class="btn btn-danger" name="">Supprimer</button></td>
                                 <td><button type="submit" class="btn btn-success" name="">Modifier</button></td>
                             </tr> <?php } ?>
@@ -60,15 +61,15 @@
 				              <thead>
 				                <tr>
 				                  <th>Statut</th>
-                                    <th>Modifier</th>
                                     <th>Supprimer</th>
+                                    <th>Modifier</th>
 				                </tr>
 				              </thead>
 				              <tbody>
 				                <tr><?php foreach ($ChangStatut as $key=>$ChangStatut) { ?>
 				                  <td><?= $ChangStatut['libelle_s'] ?></td>
-                                    <td><button class="btn btn-success" data-toggle="modal" data-target="#">Modifier</button></td>
-                                    <td><button class="btn btn-danger">Supprimer</button></td>
+                                    <td><button type="submit" class="btn btn-danger" name="">Supprimer</button></td>
+                                    <td><button type="submit" class="btn btn-success" name="">Modifier</button></td>
 				                </tr> <?php } ?>
 				              </tbody>
 				            </table>
@@ -77,7 +78,7 @@
   				</div>
     </div>
         <!-- Changement tarifs -->
-<?php $ChangeTarif = viewChangTarif(); ?>
+<?php $ChangTarifs = viewChangTarif(); ?>
   				<div class="col-md-12">
   					<div class="content-box-large">
 		  				<div class="panel-heading">
@@ -94,20 +95,17 @@
 				                  <th>Libelle Tarif</th>
 				                  <th>Commentaire</th>
 				                  <th>Prix</th>
-				                  <th>Afficher ou Masquer</th>
-                                    <th>Modifier</th>
-                                    <th>Supprimer</th>
-                                    
+				                  <th>Supprimer</th>
+                                  <th>Modifier</th>
 				                </tr>
 				              </thead>
 				              <tbody>
-				                <tr><?php foreach ($ChangeTarif as $key=>$ChangeTarif) { ?>
-				                  <td><?= $ChangeTarif['libelle_ta']?></td>
-				                  <td><?= $ChangeTarif['commentaire']?></td>
-				                  <td><?= $ChangeTarif['prix']?></td>
-                                    <td></td>
-				                  <td><button class="btn btn-success" data-toggle="modal" data-target="#">Modifier</button></td>
-                                    <td><button class="btn btn-danger">Supprimer</button></td>
+				                <tr><?php foreach ($ChangTarifs as $key=>$ChangTarif) { ?>
+				                  <td><?= $ChangTarif['libelle_ta']?></td>
+				                  <td><?= $ChangTarif['commentaire']?></td>
+				                  <td><?= $ChangTarif['prix']?></td>
+				                  <td><button type="submit" class="btn btn-danger" name="">Supprimer</button></td>
+                                    <td><button type="submit" class="btn btn-success" name="">Modifier</button></td>
 				                </tr> <?php } ?>
 				              </tbody>
 				            </table>
@@ -142,4 +140,9 @@
 
 
 
-<?php    include "includes/footer.php"; ?>
+<?php
+} else{
+    header("Location:login.php");
+}
+    
+include "includes/footer.php"; ?>

@@ -43,6 +43,8 @@ function updateInfos($email, $tel, $num, $rue, $cp, $ville, $lien){
     ));
 }
 /* Affichage horraire + update, delete ajout */ 
+
+
 function viewHoraire(){
     global $bdd;
     $req = $bdd->prepare("SELECT * FROM date, horaire WHERE date.id_d = horaire.id_d");
@@ -88,46 +90,64 @@ function viewInfoAdmin(){
     global $bdd;
     $req = $bdd->prepare("SELECT * FROM users");
     $req->execute();
-    return $req->fetch();
+    return $req->fetchAll();
 }
+
 function viewChangFormule(){
     global $bdd;
     $req = $bdd->prepare("SELECT * FROM formule");
     $req->execute();
     return $req->fetchAll();
 }
+
 function viewChangTarif() {
     global $bdd;
     $req = $bdd->prepare("SELECT * FROM tarif");
     $req->execute();
     return $req->fetchAll();
 }
-/* Partenaire */ 
 
+/* Partenaire */ 
 function viewPartenaire(){
     global $bdd;
     $req = $bdd->prepare("SELECT * FROM partenaire");
     $req ->execute();
     return $req->fetchAll();
 }
-function addPartenaire($part, $com){
+
+function addPartenaire($part, $logo, $com, $lien){
     global $bdd;
-    $req = $bdd->prepare("INSERT INTO partenaire(partenaire, commentaire) VALUES(:partenaire,:commentaire)");
-    $req->execute(array(
-        ':partenaire' => $part,
-        ':commentaire'=> $com
-    ));
+    $req = $bdd->prepare("INSERT INTO partenaire(partenaire, logo, commentaire, lien) VALUES('".$part."','".$logo."','".$com."','".$lien."')");
+    $req->execute();
     return $req->fetchAll();
 }
+
 function deletePartenaire($id_part) {
     global $bdd;
     $req = $bdd->prepare("DELETE FROM partenaire WHERE id_part=".$id_part);
     $req -> execute();
 }
+function updatePartenaire($part, $com){
+    global $bdd;
+    $req = $bdd->prepare("UPDATE partenaire SET partenaire = ?, commentaire = ?");
+    $req->execute(array(
+        $part,
+        $com 
+    ));
+}
+/* Ajout Supprésion modification admin */
+function addAdmin($login, $email, $mdp) {
+    global $bdd;
+    $req = $bdd->prepare("INSERT INTO users(login, email, mdp) VALUES('".$login."','".$email."','".$mdp."')");
+    $req -> execute();
+    return $req->fetchAll();
+}
+function deleteAdmin($id_admin) {
+    global $bdd;
+    $req = $bdd->prepare("DELETE FROM users WHERE id_u=".$id_admin);
+    $req -> execute();
+}
 ?>
-
-
-
 
 
 
