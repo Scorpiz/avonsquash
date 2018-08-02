@@ -28,7 +28,7 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
     $extension_upload = strtolower(  substr(  strrchr($_FILES['logo']['name'], '.')  ,1)  );
 
     if(isset($_POST['submitLogo'])) {
-        $maxsize = 204800000000000000000000000000000000000000;
+        $maxsize = 10485760;
         $logo = "logo";
         if (in_array($extension_upload,$extensions_valides)) echo "Extension correcte";
         if ($_FILES['logo']['size'] > $maxsize) $erreur = "Le fichier est trop gros";
@@ -129,7 +129,7 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                 <div class="content-box-large box-with-header">
                     <form method="post" action="#" enctype="multipart/form-data">
 <!--                        <div class="file-preview"></div>-->
-                        <input type="hidden" name="MAX_FILE_SIZE" value="204800000000000000000000000000000000000000">
+                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760">
                         <label class="btn btn-warning btn-xs">
                             Choisir un fichier <input name="logo" type="file" id="" style="display: none">
                         </label>
@@ -156,7 +156,7 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
             </div>
         </div>
     </div>
-        <!-- Modal -->
+        <!-- Modal info agence -->
         <div class="modal fade" id="ModalInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -167,13 +167,13 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                     <div class="modal-body">
                         <form class="form-horizontal" method="post" action="#">
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                                <label for="" class="col-sm-2 control-label">Email</label>
                                 <div class="col-sm-10">
                                     <input type="email" class="form-control" placeholder="Email" name="email" value="<?= $infos['email'] ?>">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 control-label">Téléphone</label>
+                                <label for="" class="col-sm-2 control-label">Téléphone</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" placeholder="Téléphone" name="tel" value="<?= $infos['telephone'] ?>">
                                 </div>

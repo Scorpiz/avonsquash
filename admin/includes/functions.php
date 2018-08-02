@@ -1,5 +1,5 @@
-<?php 
-/* Affichage Statut, Formule, Tarif, Info Agence*/ 
+<?php
+/* Affichage Statut, Formule, Tarif, Info Agence*/
 function viewStatus(){
     global $bdd;
     $req = $bdd->prepare("SELECT * FROM statut");
@@ -27,7 +27,7 @@ function viewAgenceInfos(){
     $req->execute();
     return $req->fetch();
 }
- /* changement info agence */ 
+ /* changement info agence */
 function updateInfos($email, $tel, $num, $rue, $cp, $ville, $lien){
     global $bdd;
     $req = $bdd->prepare("UPDATE agence SET email = ?, telephone = ?, numero = ?, rue = ?, cp = ?, ville = ?, lien_map = ?");
@@ -42,7 +42,7 @@ function updateInfos($email, $tel, $num, $rue, $cp, $ville, $lien){
         $lien
     ));
 }
-/* Affichage horraire + update, delete ajout */ 
+/* Affichage horraire + update, delete ajout */
 
 
 function viewHoraire(){
@@ -85,7 +85,7 @@ function deleteHoraire($id_d){
     $req2 = $bdd->prepare("DELETE FROM date WHERE id_d =".$id_d);
     $req2->execute();
 }
-/* Affichage info admin, changement tarif partie admin */ 
+/* Affichage info admin, changement tarif partie admin */
 function viewInfoAdmin(){
     global $bdd;
     $req = $bdd->prepare("SELECT * FROM users");
@@ -102,16 +102,16 @@ function viewChangFormule(){
 
 function viewChangTarif() {
     global $bdd;
-    $req = $bdd->prepare("SELECT * FROM tarif");
+    $req = $bdd->prepare("SELECT * FROM tarif, statut, formule WHERE tarif.id_s = statut.id_s AND tarif.id_f = formule.id_f ORDER BY statut.libelle_s");
     $req->execute();
     return $req->fetchAll();
 }
 
-/* Partenaire */ 
+/* Partenaire */
 function viewPartenaire(){
     global $bdd;
     $req = $bdd->prepare("SELECT * FROM partenaire");
-    $req ->execute();
+    $req->execute();
     return $req->fetchAll();
 }
 
@@ -132,7 +132,7 @@ function updatePartenaire($part, $com){
     $req = $bdd->prepare("UPDATE partenaire SET partenaire = ?, commentaire = ?");
     $req->execute(array(
         $part,
-        $com 
+        $com
     ));
 }
 /* Ajout Supprésion modification admin */
@@ -146,8 +146,52 @@ function deleteAdmin($id_admin) {
     global $bdd;
     $req = $bdd->prepare("DELETE FROM users WHERE id_u=".$id_admin);
     $req -> execute();
+    $req->execute();
 }
+
+function addFormule($titreF, $sousTitreF){
+    global $bdd;
+    $req = $bdd->prepare("INSERT INTO formule(titre, sous_titre) VALUES('".$titreF."', '".$sousTitreF."')");
+    $req->execute();
+    return $req->fetchAll();
+}
+
+function deleteFormule($id_f) {
+    global $bdd;
+    $req = $bdd->prepare("DELETE FROM formule WHERE id_f=".$id_f);
+    $req->execute();
+}
+
+function addStatus($libelle_s, $menu){
+    global $bdd;
+    $req = $bdd->prepare("INSERT INTO statut(libelle_s, in_menu) VALUES('".$libelle_s."', '".$menu."')");
+    $req->execute();
+    return $req->fetchAll();
+}
+
+function deleteStatus($id_s) {
+    global $bdd;
+    $req = $bdd->prepare("DELETE FROM statut WHERE id_s=".$id_s);
+    $req->execute();
+}
+
+function addTarif($Tariflibelle, $Tarifcommentaire, $Tarifprix, $Tarifstatut, $Tarifformule){
+    global $bdd;
+    $req = $bdd->prepare("INSERT INTO tarif(libelle_ta, commentaire, prix, id_s, id_f) VALUES('".$Tariflibelle."', '".$Tarifcommentaire."', '".$Tarifprix."', '".$Tarifstatut."', '".$Tarifformule."')");
+    $req->execute();
+    return $req->fetchAll();
+}
+
+function deleteTarif($id_ta) {
+    global $bdd;
+    $req = $bdd->prepare("DELETE FROM tarif WHERE id_ta=".$id_ta);
+    $req->execute();
+}
+
 ?>
+
+
+
 
 
 

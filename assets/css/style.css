@@ -915,10 +915,12 @@ header {
     padding-left: 30px;
 }
 
-.pricing.selected {
+.pricing.selected, .price-title.selected{
     background-color: #1C1D21;
     cursor: pointer;
+    color: #f39c12;
 }
+
 
 .pricing::after {
     content: "";
@@ -954,10 +956,6 @@ header {
     font-size: 1.2em;
     margin-left: 10px;
     margin-right: 10px;
-}
-
-.pricing .price-title .bouton .selected  {
-    color: #f39c12;
 }
 
 .pricing:hover .price-title{
@@ -1004,6 +1002,9 @@ header {
     padding-right: 10px
 }
 
+.parent-pricing-enfant{
+    display: none;
+}
 
 .pricing-enfant {
     position: relative;
@@ -1011,7 +1012,6 @@ header {
     z-index: 11;
     margin: 15px 0px;
     background-color: #1C1D21;
-    display: none;
 }
 
 .pricing-enfant::after {

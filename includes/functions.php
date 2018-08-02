@@ -1,15 +1,15 @@
 <?php
 
-function viewStatus($is_pro){
+function viewStatus(){
     global $bdd;
-    $req = $bdd->prepare("SELECT * FROM statut WHERE is_pro = ".$is_pro);
+    $req = $bdd->prepare("SELECT * FROM statut WHERE in_menu = 1");
     $req->execute();
     return $req->fetchAll();
 }
 
-function viewFormule($is_active, $is_info){
+function viewFormule($is_active){
     global $bdd;
-    $req = $bdd->prepare("SELECT * FROM formule WHERE is_active ='".$is_active."' AND is_info ='".$is_info."' ORDER BY can_be_deleted");
+    $req = $bdd->prepare("SELECT * FROM formule WHERE is_active ='".$is_active."' ORDER BY can_be_deleted");
     $req->execute();
     return $req->fetchAll();
 }
@@ -35,7 +35,15 @@ function viewhoraire(){
     $req->execute();
     return $req->fetchAll();
 }
-/* Partenaire */ 
+
+function transformIdStatus($id_f, $id_s){
+    if($id_f == 11 || $id_f == 10) {
+        return $id_f . 'a';
+    }  else {
+        return $id_s;
+    }
+}
+/* Partenaire */
 function viewPartenaire(){
     global $bdd;
     $req = $bdd->prepare("SELECT * FROM partenaire");

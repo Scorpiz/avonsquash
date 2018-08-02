@@ -24,6 +24,22 @@ switch($_GET['type']){
         deletePartenaire($id_part);
         header("location:espacepart.php");
         break;
+    case "form":
+        $id_f = $_GET["id"];
+        deleteFormule($id_f);
+        header("location:tarif.php");
+        break;
+    case "stat":
+        $id_s = $_GET["id"];
+        deleteStatus($id_s);
+        header("location:tarif.php");
+        break;
+    case "tar":
+        $id_ta = $_GET["id"];
+        deleteTarif($id_ta);
+        header("location:tarif.php");
+        break;
+        break;
     case "delad":
         $id_admin = $_GET["id"];
         deleteAdmin($id_admin);

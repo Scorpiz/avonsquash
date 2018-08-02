@@ -24,11 +24,13 @@ $(document).ready(function(){
 
         $('.pricing').removeClass('selected');
         $(this).addClass('selected');
+        $('.price-title .bouton').removeClass('selected');
+        $(this).addClass('selected');
 
         $('.price-content').css('display', 'none');
         $('.statut-' + idStatut).css('display', 'block');
 
-        $('.pricing-enfant').each(function (keyF) {
+        $('.parent-pricing-enfant').each(function (keyF) {
             tarifs = $(this).find('.price-content');
             
             hasTarif = 0;

@@ -139,27 +139,25 @@ include "includes/functions.php";
             </div>
             <!-- /Section header -->
 
-            <?php $statuts = viewStatus(0);
-            foreach ($statuts as $keyStatut=>$statut) {
-                if ($statut['libelle_s'] != 'Aucun statut'){?>
-                    <div class="col-sm-4">
-                        <div class="pricing" data-statut="<?= $statut['id_s'] ?>">
-                            <div class="price-head">
-                                <span class="price-title bouton statut-menu"><?= $statut['libelle_s'] ?></span>
-                            </div>
+            <?php $statuts = viewStatus();
+            foreach ($statuts as $keyStatut=>$statut) {?>
+                <div class="col-sm-4">
+                    <div class="pricing" data-statut="<?= $statut['id_s'] ?>">
+                        <div class="price-head">
+                            <span class="price-title bouton statut-menu"><?= $statut['libelle_s'] ?></span>
                         </div>
                     </div>
-                <?php }
-            } ?>
+                </div>
+            <?php } ?>
             <div class="col-sm-6">
-                <div class="pricing">
+                <div class="pricing" data-statut="10a">
                     <div class="price-head">
                         <span class="price-title bouton statut-menu">Espace pro</span>
                     </div>
                 </div>
             </div>
             <div class="col-sm-6">
-                <div class="pricing">
+                <div class="pricing" data-statut="11a">
                     <div class="price-head">
                         <span class="price-title bouton statut-menu">Informations complémentaires</span>
                     </div>
@@ -167,17 +165,20 @@ include "includes/functions.php";
             </div>
 
             <!--tarif-->
-            <?php $formules0 = viewFormule(1, 0);
+            <?php $formules0 = viewFormule(1);
             foreach ($formules0 as $key=>$formule0) {
-                $tarifs0 = viewTarif($formule0['id_f']); ?>
-                <div class="col-sm-6">
+                $tarifs0 = viewTarif($formule0['id_f']);
+             ?>
+                <div class="parent-pricing-enfant col-sm-6">
                     <div class="pricing-enfant">
                         <div class="price-head">
                             <span class="price-title"><?= $formule0['titre'] ?></span>
                             <p class="subtitle"><?= $formule0['sous_titre'] ?></p>
                         </div>
-                        <?php foreach ($tarifs0 as $keyTarif=>$tarif0) { ?>
-                            <ul class="price-content statut-<?= $tarif0['id_s'] ?>">
+                        <?php foreach ($tarifs0 as $keyTarif=>$tarif0) {
+                            $transformIdStatus = transformIdStatus($formule0['id_f'], $tarif0['id_s']);
+                         ?>
+                            <ul class="price-content statut-<?= $transformIdStatus ?>">
                                 <?php if($keyTarif != 0 && $tarifs0[$keyTarif - 1]['libelle_s'] == $tarif0['libelle_s']){ 
                                 
                                  } else if($tarif0['libelle_s'] !== 'Aucun statut'){ ?>
