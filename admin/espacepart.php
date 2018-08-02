@@ -3,6 +3,7 @@ session_start();
 if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
 
     include "includes/header.php"; ?>
+
     <div class="col-md-10">
         <div class="row">
             <div class="col-md-12">
@@ -15,8 +16,10 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                         if(isset($_POST['addPartenaire'])){
                             $part = htmlspecialchars($_POST['part']);
                             $com = htmlspecialchars($_POST['com']);
+                            $lien = htmlspecialchars($_POST['lien']);
+                            $logo = htmlspecialchars($_POST['logo']);
                             echo "Ajout effectuer";
-                            addPartenaire($part, $com);
+                            addPartenaire($part, $logo, $com, $lien);
                         }
                         ?>
                         <div class="panel-options">
@@ -28,7 +31,9 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                             <thead>
                             <tr>
                                 <th>Nom</th>
+                                <th>Logo</th>
                                 <th>Commentaire</th>
+                                <th>Lien site</th>
                                 <th>Afficher ou masquer</th>
                                 <th>Supprimer</th>
                                 <th>Modifier</th>
@@ -39,7 +44,9 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                             foreach ($part as $key=>$par) { ?>
                                 <tr>
                                     <td><?= $par['partenaire'] ?></td>
+                                    <td></td>
                                     <td><?= $par['commentaire'] ?></td>
+                                    <td></td>
                                     <td></td>
                                     <td><a href="delete.php?type=delpar&id=<?= $par['id_part'] ?> "type="submit" class="btn btn-danger" name="">Supprimer</a></td>
                                     <td><button type="submit" class="btn btn-success" name="">Modifier</button></td>
@@ -86,4 +93,8 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
     </div><!-- /.modal -->
 
 
-    <?php    include "includes/footer.php"; } ?>
+<?php 
+} else{
+    header("Location:login.php");
+}  
+    include "includes/footer.php"; ?>

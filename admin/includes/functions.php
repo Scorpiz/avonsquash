@@ -1,4 +1,5 @@
-<?php
+<?php 
+/* Affichage Statut, Formule, Tarif, Info Agence*/ 
 function viewStatus(){
     global $bdd;
     $req = $bdd->prepare("SELECT * FROM statut");
@@ -26,7 +27,7 @@ function viewAgenceInfos(){
     $req->execute();
     return $req->fetch();
 }
-
+ /* changement info agence */ 
 function updateInfos($email, $tel, $num, $rue, $cp, $ville, $lien){
     global $bdd;
     $req = $bdd->prepare("UPDATE agence SET email = ?, telephone = ?, numero = ?, rue = ?, cp = ?, ville = ?, lien_map = ?");
@@ -41,6 +42,8 @@ function updateInfos($email, $tel, $num, $rue, $cp, $ville, $lien){
         $lien
     ));
 }
+/* Affichage horraire + update, delete ajout */ 
+
 
 function viewHoraire(){
     global $bdd;
@@ -67,11 +70,27 @@ function addJour($jour){
     return $req->fetchAll();
 }
 
+function addHeure($heure, $jour){
+    global $bdd;
+    $req = $bdd->prepare("INSERT INTO horaire(heure, id_d) VALUES('".$heure."', (SELECT id_d FROM date WHERE jour ='".$jour."'))");
+    $req->execute();
+    return $req->fetchAll();
+}
+
+
+function deleteHoraire($id_d){
+    global $bdd;
+    $req = $bdd->prepare("DELETE FROM horaire WHERE id_d =".$id_d);
+    $req->execute();
+    $req2 = $bdd->prepare("DELETE FROM date WHERE id_d =".$id_d);
+    $req2->execute();
+}
+/* Affichage info admin, changement tarif partie admin */ 
 function viewInfoAdmin(){
     global $bdd;
     $req = $bdd->prepare("SELECT * FROM users");
     $req->execute();
-    return $req->fetch();
+    return $req->fetchAll();
 }
 
 function viewChangFormule(){
@@ -88,21 +107,7 @@ function viewChangTarif() {
     return $req->fetchAll();
 }
 
-function addHeure($heure, $jour){
-    global $bdd;
-    $req = $bdd->prepare("INSERT INTO horaire(heure, id_d) VALUES('".$heure."', (SELECT id_d FROM date WHERE jour ='".$jour."'))");
-    $req->execute();
-    return $req->fetchAll();
-}
-
-function deleteHoraire($id_d){
-    global $bdd;
-    $req = $bdd->prepare("DELETE FROM horaire WHERE id_d =".$id_d);
-    $req->execute();
-    $req2 = $bdd->prepare("DELETE FROM date WHERE id_d =".$id_d);
-    $req2->execute();
-}
-
+/* Partenaire */ 
 function viewPartenaire(){
     global $bdd;
     $req = $bdd->prepare("SELECT * FROM partenaire");
@@ -110,9 +115,9 @@ function viewPartenaire(){
     return $req->fetchAll();
 }
 
-function addPartenaire($part, $com){
+function addPartenaire($part, $logo, $com, $lien){
     global $bdd;
-    $req = $bdd->prepare("INSERT INTO partenaire(partenaire, commentaire) VALUES('".$part."', '".$com."')");
+    $req = $bdd->prepare("INSERT INTO partenaire(partenaire, logo, commentaire, lien) VALUES('".$part."','".$logo."','".$com."','".$lien."')");
     $req->execute();
     return $req->fetchAll();
 }
@@ -122,10 +127,27 @@ function deletePartenaire($id_part) {
     $req = $bdd->prepare("DELETE FROM partenaire WHERE id_part=".$id_part);
     $req -> execute();
 }
+function updatePartenaire($part, $com){
+    global $bdd;
+    $req = $bdd->prepare("UPDATE partenaire SET partenaire = ?, commentaire = ?");
+    $req->execute(array(
+        $part,
+        $com 
+    ));
+}
+/* Ajout Supprésion modification admin */
+function addAdmin($login, $email, $mdp) {
+    global $bdd;
+    $req = $bdd->prepare("INSERT INTO users(login, email, mdp) VALUES('".$login."','".$email."','".$mdp."')");
+    $req -> execute();
+    return $req->fetchAll();
+}
+function deleteAdmin($id_admin) {
+    global $bdd;
+    $req = $bdd->prepare("DELETE FROM users WHERE id_u=".$id_admin);
+    $req -> execute();
+}
 ?>
-
-
-
 
 
 

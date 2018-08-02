@@ -23,7 +23,12 @@ switch($_GET['type']){
         $id_part = $_GET["id"];
         deletePartenaire($id_part);
         header("location:espacepart.php");
-        break;  
+        break;
+    case "delad":
+        $id_admin = $_GET["id"];
+        deleteAdmin($id_admin);
+        header("location:adminprofil.php");
+        break;
 }
 
 ?>

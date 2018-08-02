@@ -274,7 +274,71 @@ include "includes/functions.php";
 
 </div>
 <!-- /Contact -->
+        
+<!--Espace partenaire -->
+<div id="partenaire" class="section md-padding bg-grey">
 
+    <!-- Container -->
+    <div class="container">
+
+        <!-- Row -->
+        <div class="row">
+
+            <!-- Section-header -->
+            <div class="section-header text-center">
+                <h2 class="title">Nos partenaires</h2>
+            </div>
+            <!-- /Section-header -->
+<!-- Listing partenaire -->
+            <?php $part = viewPartenaire();
+            foreach ($part as $key=>$par) { ?>
+            <div class="col-sm-4">
+                <div class="partenaire">
+                    <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/e/ea/Mcdonalds_France_2009_logo.svg/853px-Mcdonalds_France_2009_logo.svg.png">
+                    <h3><?= $par['partenaire']?></h3>
+                    <p><?= $par['commentaire']?></p>
+                </div>
+            </div><?php } ?>
+<!-- /listing partenaire -->
+        </div>
+<!-- Row -->
+    </div>
+<!-- Container -->
+</div>
+<!--/Espace partenaire-->
 <?php
 include "includes/footer.php";
 ?>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        

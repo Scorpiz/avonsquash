@@ -1,4 +1,7 @@
 <?php 
+session_start();
+if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
+
     include "includes/header.php"; ?>
 <div class="col-md-10">
         <div class="row">  				
@@ -39,4 +42,8 @@
     </div>
 
 
-<?php    include "includes/footer.php"; ?>
+<?php
+} else{
+    header("Location:login.php");
+}    
+include "includes/footer.php"; ?>

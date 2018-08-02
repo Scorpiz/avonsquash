@@ -1590,6 +1590,20 @@ header {
 .contact-form .input:nth-child(2) {
     margin-left: 15px;
 }
+/*------------------------------------\
+    Partenaire
+*------------------------------------*/
+
+.partenaire {
+    margin: 15px 0px;
+    text-align: center;
+}
+
+.partenaire img {
+width: 130px;
+height: auto;
+
+}
 
 /*------------------------------------*\
 	Footer

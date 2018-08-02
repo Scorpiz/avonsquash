@@ -35,4 +35,11 @@ function viewhoraire(){
     $req->execute();
     return $req->fetchAll();
 }
+/* Partenaire */ 
+function viewPartenaire(){
+    global $bdd;
+    $req = $bdd->prepare("SELECT * FROM partenaire");
+    $req ->execute();
+    return $req->fetchAll();
+}
 ?>
