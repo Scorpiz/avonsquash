@@ -16,21 +16,18 @@ $(document).ready(function(){
       $li.addClass("open");
     }
   });
-
-    function readURL(input) {
-
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function(e) {
-                $('#blah').attr('src', e.target.result);
-            }
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    $("#imgInp").change(function() {
-        readURL(this);
-    });
+// function updates
+//    $('.updateBtnH').on('click', function () {
+//        id_h = $(this).attr('data-id');
+//        $('#updateH').val(id_h);
+//    }) 
+    $('.updateadp').on('click', function () {
+        id_u = $(this).attr('data-id');
+        $('#updateadp').val(id_u);
+    }) 
+    $('.updatepart').on('click', function () {
+        id_part = $(this).attr('data-id');
+        $('#updatepart').val(id_part);
+    }) 
+    
 });

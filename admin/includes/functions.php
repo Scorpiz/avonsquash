@@ -127,28 +127,17 @@ function deletePartenaire($id_part) {
     $req = $bdd->prepare("DELETE FROM partenaire WHERE id_part=".$id_part);
     $req -> execute();
 }
-function updatePartenaire($part, $com){
+function updatePartenaire($part, $logo, $com, $lien){
     global $bdd;
-    $req = $bdd->prepare("UPDATE partenaire SET partenaire = ?, commentaire = ?");
+    $req = $bdd->prepare("UPDATE partenaire SET partenaire = ?, logo = ?, commentaire = ?, lien = ? WHERE id_part=".id_part);
     $req->execute(array(
         $part,
-        $com
+        $logo,
+        $com,
+        $lien
     ));
 }
-/* Ajout Supprésion modification admin */
-function addAdmin($login, $email, $mdp) {
-    global $bdd;
-    $req = $bdd->prepare("INSERT INTO users(login, email, mdp) VALUES('".$login."','".$email."','".$mdp."')");
-    $req -> execute();
-    return $req->fetchAll();
-}
-function deleteAdmin($id_admin) {
-    global $bdd;
-    $req = $bdd->prepare("DELETE FROM users WHERE id_u=".$id_admin);
-    $req -> execute();
-    $req->execute();
-}
-
+/* ajouter suppresson formule */
 function addFormule($titreF, $sousTitreF){
     global $bdd;
     $req = $bdd->prepare("INSERT INTO formule(titre, sous_titre) VALUES('".$titreF."', '".$sousTitreF."')");
@@ -186,6 +175,28 @@ function deleteTarif($id_ta) {
     global $bdd;
     $req = $bdd->prepare("DELETE FROM tarif WHERE id_ta=".$id_ta);
     $req->execute();
+}
+/* Ajout Supprésion modification admin profile */
+function addAdmin($login, $email, $mdp) {
+    global $bdd;
+    $req = $bdd->prepare("INSERT INTO users(login, email, mdp) VALUES('".$login."','".$email."','".$mdp."')");
+    $req -> execute();
+    return $req->fetchAll();
+}
+function deleteAdmin($id_admin) {
+    global $bdd;
+    $req = $bdd->prepare("DELETE FROM users WHERE id_u=".$id_admin);
+    $req -> execute();
+    $req->execute();
+}
+function updateAdmin($id_u, $login, $email,$mdp){
+    global $bdd;
+    $req = $bdd->prepare ("UPDATE users SET login = ?, email = ?, mdp = ? WHERE id_u=".$id_u);
+    $req->execute(array(
+        $login,
+        $email,
+        $mdp
+        ));
 }
 
 ?>

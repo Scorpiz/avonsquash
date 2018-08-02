@@ -3,7 +3,7 @@ session_start();
 if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
     include "includes/header.php"; 
 
-
+/* ajout admin */
                         if(isset($_POST['addAdmin'])){
                             $login = htmlspecialchars($_POST['login']);
                             $email = htmlspecialchars($_POST['email']);
@@ -15,6 +15,20 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                             } else {
                             echo "Les mots de passes ne correspondent pas"; }
                             }
+/* Update admin */ 
+    if(isset($_POST['submitUpAd'])){
+        $id_u = $_POST["data-id-admin"];
+        $login = htmlspecialchars($_POST['loginupdate']);
+        $email = htmlspecialchars($_POST['emailupdate']);
+        $mdp = htmlspecialchars(sha1($_POST['mdpupdate']));
+        $confirmmdp = htmlspecialchars(sha1($_POST['confirmmdpupdate']));
+var_dump($id_u, $login, $email, $mdp, $confirmmdp);
+
+//        if($mdp == $confirmmdp){
+//            echo "Changement effectuer";
+//        updateAdmin($id_u, $login, $email, $mdp);
+//        }else { echo "Les mots de passes ne correspondent pas"; } 
+    }
 ?>
             <div class="col-md-10">
                 <div class="row">
@@ -41,7 +55,7 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                                     <tr> <?php   $infosAdmin = viewInfoAdmin();
                                             foreach ($infosAdmin as $key=>$infoAdmin) { ?>
                                         <td><?= $infoAdmin['login'] ?></td>
-                                        <td><?= $infoAdmin['email'] ?></td>                               <td><button type="submit" class="btn btn-success" name="accept_demande">Modifier</button></td>
+                                        <td><?= $infoAdmin['email'] ?></td>                               <td><button type="submit" class="btn btn-success updateadp" data-toggle="modal" data-target="#modalEditadmin" data-id="<?= $infoAdmin['id_u'] ?>">Modifier</button></td>
                                         <?php if($infoAdmin['lvl']!=2){ ?>
                                         <td><a href="delete.php?type=delad&id=<?= $infoAdmin['id_u'] ?> "type="submit" class="btn btn-danger" name="">Supprimer</a></td> 
                                         <?php } ?>
@@ -101,6 +115,52 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
     </div><!-- /.modal -->
 
 
+        <!-- Modal update admin -->
+        <div class="modal fade" id="modalEditadmin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Modification d'un compte admin</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" method="post" action="#">
+                            <div class="form-group">
+                                <label for="" class="col-sm-2 control-label">Login</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" placeholder="login" name="loginupdate">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-2 control-label">email</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" placeholder="email" name="emailupdate">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-2 control-label">Mot de passe</label>
+                                <div class="col-sm-10">
+                                    <input type=password class="form-control" placeholder="Mot de passe" name="mdpupdate">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-2 control-label">Confirmation mot de passe</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" placeholder="Confirmation mot de passe" name="confirmmdpupdate">
+                                </div>
+                            </div>
+                            <input type="hidden" name="data-id-admin" id="updateadp" value="">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-primary" name="submitUpAd">Enregistrer</button>
+                    </div>
+                    </form>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <!-- /Modal -->
 <?php 
 } else{
     header("Location:login.php");

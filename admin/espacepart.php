@@ -21,6 +21,15 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                             echo "Ajout effectuer";
                             addPartenaire($part, $logo, $com, $lien);
                         }
+                        if(isset($_POST['UpdatePart'])){
+                            $id_part = $_POST["data-id-part"];
+                            $part = htmlspecialchars($_POST['partup']);
+                            $com = htmlspecialchars($_POST['comup']);
+                            $lien = htmlspecialchars($_POST['lienup']);
+                            $logo = htmlspecialchars($_POST['logoup']);
+                            echo "Modification effectuer";
+                            updatePartenaire($part, $logo, $com, $lien);
+                        }
                         ?>
                         <div class="panel-options">
                             <a href="#" data-toggle="modal" data-target="#modalAddPart"><i class="fas fa-plus-circle"></i></a>
@@ -49,7 +58,7 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                                     <td></td>
                                     <td></td>
                                     <td><a href="delete.php?type=delpar&id=<?= $par['id_part'] ?> "type="submit" class="btn btn-danger" name="">Supprimer</a></td>
-                                    <td><button type="submit" class="btn btn-success" name="">Modifier</button></td>
+                                    <td><button type="submit" class="btn btn-success" data-toggle="modal" data-target="modalEditPart" data-id="<?= $par['id_part'] ?>">Modifier</button></td>
                                 </tr>
                             <?php } ?>
 
@@ -92,7 +101,51 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
-
+    <!-- Modal update Partenaire -->
+  <div class="modal fade" id="modalEditPart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Modification du partenaire</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" method="post" action="#">
+                            <div class="form-group">
+                                <label for="" class="col-sm-2 control-label">Nom partenaire</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" placeholder="Nom partenaire" name="partup">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-2 control-label">Logo partenaire</label>
+                                <div class="col-sm-10">
+                                    <input type="file" class="form-control" name="logoup">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-2 control-label">Commentaire/Description</label>
+                                <div class="col-sm-10">
+                                    <input type=password class="form-control" placeholder="Commentaire" name="comup">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-2 control-label">Lien du site du partenaire</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" placeholder="lien site" name="lienup">
+                                </div>
+                            </div>
+                            <input type="hidden" name="data-id-part" id="updatepart" value="">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-primary" name="UpdatePart">Enregistrer</button>
+                    </div>
+                    </form>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <!-- /Modal -->
 <?php 
 } else{
     header("Location:login.php");

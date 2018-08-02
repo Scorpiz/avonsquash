@@ -298,6 +298,7 @@ include "includes/functions.php";
                     <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/e/ea/Mcdonalds_France_2009_logo.svg/853px-Mcdonalds_France_2009_logo.svg.png">
                     <h3><?= $par['partenaire']?></h3>
                     <p><?= $par['commentaire']?></p>
+                    <br>
                 </div>
             </div><?php } ?>
 <!-- /listing partenaire -->
