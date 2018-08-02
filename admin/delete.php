@@ -15,8 +15,8 @@ require "includes/functions.php";
 
 switch($_GET['type']){
     case "hor":
-        $id_d = $_GET["id"];
-        deleteHoraire($id_d);
+        $id_h = $_GET["id"];
+        deleteHoraire($id_h);
         header("location:admin.php");
         break;
     case "delpar":

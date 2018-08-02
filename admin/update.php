@@ -13,13 +13,4 @@ catch(Exception $e)
 
 require "includes/functions.php";
 
-switch($_GET['type']){
-    case "hor":
-        $jour = $_POST['jour_update'];
-        $heure = $_POST['heure_update'];
-        $id_d = $_GET["id"];
-        updateHoraire($jour, $heure, $id_d);
-        header("location:admin.php");
-        break;
-}
 ?>

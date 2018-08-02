@@ -1,6 +1,5 @@
 $(document).ready(function(){
 
-
   $(".submenu > a").click(function(e) {
     e.preventDefault();
     var $li = $(this).parent("li");
@@ -17,10 +16,10 @@ $(document).ready(function(){
     }
   });
 // function updates
-//    $('.updateBtnH').on('click', function () {
-//        id_h = $(this).attr('data-id');
-//        $('#updateH').val(id_h);
-//    }) 
+    $('.updateBtnH').on('click', function () {
+        id_h = $(this).attr('data-id');
+        $('#updateH').val(id_h);
+    }) 
     $('.updateadp').on('click', function () {
         id_u = $(this).attr('data-id');
         $('#updateadp').val(id_u);
@@ -29,5 +28,4 @@ $(document).ready(function(){
         id_part = $(this).attr('data-id');
         $('#updatepart').val(id_part);
     }) 
-    
 });
