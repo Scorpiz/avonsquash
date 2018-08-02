@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    //function header background
     var header = $('.bg-img');
 
     var backgrounds = new Array(
@@ -17,8 +18,8 @@ $(document).ready(function(){
     setInterval(nextBackground, 10000);
 
     header.css('background-image', backgrounds[0]);
-
-
+//
+// function menu tarifs
     $('.pricing').on('click', function(){
         idStatut = $(this).attr('data-statut');
 
@@ -32,7 +33,7 @@ $(document).ready(function(){
 
         $('.parent-pricing-enfant').each(function (keyF) {
             tarifs = $(this).find('.price-content');
-            
+
             hasTarif = 0;
             tarifs.each(function (keyT) {
                 if($(this).css('display') !== 'none'){
@@ -46,6 +47,6 @@ $(document).ready(function(){
             }
         });
     });
-
+//
 
 });

@@ -1,6 +1,5 @@
 $(document).ready(function(){
 
-
   $(".submenu > a").click(function(e) {
     e.preventDefault();
     var $li = $(this).parent("li");
@@ -17,20 +16,10 @@ $(document).ready(function(){
     }
   });
 
-    function readURL(input) {
-
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function(e) {
-                $('#blah').attr('src', e.target.result);
-            }
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    $("#imgInp").change(function() {
-        readURL(this);
-    });
+    // function updates
+    $('.updateBtnH').on('click', function () {
+        id_h = $(this).attr('data-id');
+        $('#updateH').val(id_h);
+    })
+    //
 });

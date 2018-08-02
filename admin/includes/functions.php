@@ -42,48 +42,39 @@ function updateInfos($email, $tel, $num, $rue, $cp, $ville, $lien){
         $lien
     ));
 }
-/* Affichage horraire + update, delete ajout */
+/* Affichage horaire + update, delete ajout */
 
 
 function viewHoraire(){
     global $bdd;
-    $req = $bdd->prepare("SELECT * FROM date, horaire WHERE date.id_d = horaire.id_d");
+    $req = $bdd->prepare("SELECT * FROM horaire");
     $req->execute();
     return $req->fetchAll();
 }
 
-function updateHoraire($jour, $heure, $id_d){
-     global $bdd;
-    $req = $bdd->prepare("UPDATE date, horaire SET date.jour = ?, horaire.heure = ? WHERE date.id_d='".$id_d."'");
+function addHoraire($jour, $heure){
+    global $bdd;
+    $req = $bdd->prepare("INSERT INTO horaire(jour, heure) VALUES(:jour, :heure)");
+    $req->execute(array(
+        ':jour' => $jour,
+        ':heure' => $heure
+    ));
+    return $req->fetchAll();
+}
+
+function updateHoraire($jour, $heure, $id_h){
+    global $bdd;
+    $req = $bdd->prepare("UPDATE horaire SET jour = ?, heure = ? WHERE id_h='".$id_h."'");
     $req->execute(array(
         $jour,
         $heure
     ));
 }
 
-function addJour($jour){
+function deleteHoraire($id_h){
     global $bdd;
-    $req = $bdd->prepare("INSERT INTO date(jour) VALUES(:jour)");
-    $req->execute(array(
-        ':jour' => $jour
-    ));
-    return $req->fetchAll();
-}
-
-function addHeure($heure, $jour){
-    global $bdd;
-    $req = $bdd->prepare("INSERT INTO horaire(heure, id_d) VALUES('".$heure."', (SELECT id_d FROM date WHERE jour ='".$jour."'))");
+    $req = $bdd->prepare("DELETE FROM horaire WHERE id_h =".$id_h);
     $req->execute();
-    return $req->fetchAll();
-}
-
-
-function deleteHoraire($id_d){
-    global $bdd;
-    $req = $bdd->prepare("DELETE FROM horaire WHERE id_d =".$id_d);
-    $req->execute();
-    $req2 = $bdd->prepare("DELETE FROM date WHERE id_d =".$id_d);
-    $req2->execute();
 }
 /* Affichage info admin, changement tarif partie admin */
 function viewInfoAdmin(){
@@ -135,7 +126,7 @@ function updatePartenaire($part, $com){
         $com
     ));
 }
-/* Ajout Supprésion modification admin */
+/* Ajout, suppression, modification d'admins */
 function addAdmin($login, $email, $mdp) {
     global $bdd;
     $req = $bdd->prepare("INSERT INTO users(login, email, mdp) VALUES('".$login."','".$email."','".$mdp."')");
