@@ -76,53 +76,53 @@ include "includes/functions.php";
 </header>
 <!-- /Header -->
 
-<!-- Blog -->
-<div id="blog" class="section md-padding">
-
-    <!-- Container -->
-    <div class="container">
-
-        <!-- Row -->
-        <div class="row">
-
-            <!-- Section header -->
-            <div class="section-header text-center">
-                <h2 class="title">News récentes</h2>
-            </div>
-            <!-- /Section header -->
-
-            <!-- blog -->
-            <div class="col-md-4">
-                <div class="blog">
-
-                </div>
-            </div>
-            <!-- /blog -->
-
-            <!-- blog -->
-            <div class="col-md-4">
-                <div class="blog">
-
-                </div>
-            </div>
-            <!-- /blog -->
-
-            <!-- blog -->
-            <div class="col-md-4">
-                <div class="blog">
-
-                </div>
-            </div>
-            <!-- /blog -->
-
-        </div>
-        <!-- /Row -->
-
-    </div>
-    <!-- /Container -->
-
-</div>
-<!-- /Blog -->
+<!--<!-- Blog -->
+<!--<div id="blog" class="section md-padding">-->
+<!---->
+<!--    <!-- Container -->
+<!--    <div class="container">-->
+<!---->
+<!--        <!-- Row -->
+<!--        <div class="row">-->
+<!---->
+<!--            <!-- Section header -->
+<!--            <div class="section-header text-center">-->
+<!--                <h2 class="title">News récentes</h2>-->
+<!--            </div>-->
+<!--            <!-- /Section header -->
+<!---->
+<!--            <!-- blog -->
+<!--            <div class="col-md-4">-->
+<!--                <div class="blog">-->
+<!---->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <!-- /blog -->
+<!---->
+<!--            <!-- blog -->
+<!--            <div class="col-md-4">-->
+<!--                <div class="blog">-->
+<!---->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <!-- /blog -->
+<!---->
+<!--            <!-- blog -->
+<!--            <div class="col-md-4">-->
+<!--                <div class="blog">-->
+<!---->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <!-- /blog -->
+<!---->
+<!--        </div>-->
+<!--        <!-- /Row -->
+<!---->
+<!--    </div>-->
+<!--    <!-- /Container -->
+<!---->
+<!--</div>-->
+<!--<!-- /Blog -->
 <!-- Tarifs -->
 
 <div id="pricing" class="section md-padding bg-grey">

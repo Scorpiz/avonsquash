@@ -22,8 +22,16 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
         addHoraire($jour, $heure);
     }
 
-    $extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' );
-    $extension_upload = strtolower(  substr(  strrchr($_FILES['logo']['name'], '.')  ,1)  );
+    if(isset($_POST['updateHoraire'])){
+        $jour = $_POST['jour_update'];
+        $heure = $_POST['heure_update'];
+        $id_h = $_POST["data-id-H"];
+
+        updateHoraire($jour, $heure, $id_h);
+    }
+
+    $extensions_valides = array('jpg', 'jpeg', 'gif', 'png');
+    $extension_upload = strtolower(substr(strrchr($_FILES['logo']['name'], '.'), 1));
 
     if(isset($_POST['submitLogo'])) {
         $maxsize = 10485760;
@@ -34,14 +42,6 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
         $nom = "../assets/img/{$logo}.{$extension_upload}";
         $resultat = move_uploaded_file($_FILES['logo']['tmp_name'],$nom);
         if ($resultat) echo "Transfert réussi";
-    }
-
-    if(isset($_POST['updateHoraire'])){
-        $jour = $_POST['jour_update'];
-        $heure = $_POST['heure_update'];
-        $id_h = $_POST["data-id-H"];
-
-        updateHoraire($jour, $heure, $id_h);
     }
     ?>
 

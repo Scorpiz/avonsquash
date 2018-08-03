@@ -27,6 +27,7 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                             $com = htmlspecialchars($_POST['comup']);
                             $lien = htmlspecialchars($_POST['lienup']);
                             $logo = htmlspecialchars($_POST['logoup']);
+                            var_dump($id_part, $part, $com, $lien, $logo);
                             echo "Modification effectuer";
                             updatePartenaire($part, $logo, $com, $lien);
                         }
@@ -58,7 +59,7 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                                     <td></td>
                                     <td></td>
                                     <td><a href="delete.php?type=delpar&id=<?= $par['id_part'] ?> "type="submit" class="btn btn-danger" name="">Supprimer</a></td>
-                                    <td><button type="submit" class="btn btn-success" data-toggle="modal" data-target="modalEditPart" data-id="<?= $par['id_part'] ?>">Modifier</button></td>
+                                    <td><button type="submit" class="btn btn-success updateBtnPart" data-toggle="modal" data-target="#modalEditPart" data-id="<?= $par['id_part'] ?>">Modifier</button></td>
                                 </tr>
                             <?php } ?>
 
@@ -118,24 +119,28 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="" class="col-sm-2 control-label">Logo partenaire</label>
+                                <label class="col-md-2 control-label">Logo</label>
+                                <div class="col-md-10">
+                                    <input type="file" class="btn btn-default" id="" name="logoup">
+                                    <p class="help-block">
+                                        Logo du partenaire
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="" class="col-sm-2 control-label">Commentaire</label>
                                 <div class="col-sm-10">
-                                    <input type="file" class="form-control" name="logoup">
+                                    <input type=text class="form-control" placeholder="Commentaire/Description" name="comup">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="" class="col-sm-2 control-label">Commentaire/Description</label>
+                                <label for="" class="col-sm-2 control-label">Lien</label>
                                 <div class="col-sm-10">
-                                    <input type=password class="form-control" placeholder="Commentaire" name="comup">
+                                    <input type="text" class="form-control" placeholder="Lien du site du partenaire" name="lienup">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="" class="col-sm-2 control-label">Lien du site du partenaire</label>
-                                <div class="col-sm-10">
-                                    <input type="password" class="form-control" placeholder="lien site" name="lienup">
-                                </div>
-                            </div>
-                            <input type="hidden" name="data-id-part" id="updatepart" value="">
+                            <input type="hidden" name="data-id-part" id="updatePart" value="">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>

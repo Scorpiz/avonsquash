@@ -19,13 +19,21 @@ $(document).ready(function(){
     $('.updateBtnH').on('click', function () {
         id_h = $(this).attr('data-id');
         $('#updateH').val(id_h);
-    }) 
+    });
     $('.updateadp').on('click', function () {
         id_u = $(this).attr('data-id');
         $('#updateadp').val(id_u);
-    }) 
-    $('.updatepart').on('click', function () {
+    });
+    $('.updateBtnPart').on('click', function () {
         id_part = $(this).attr('data-id');
-        $('#updatepart').val(id_part);
-    }) 
+        $('#updatePart').val(id_part);
+    });
+    $('.updateBtnFormule').on('click', function () {
+        id_f = $(this).attr('data-id');
+        $('#updateF').val(id_f);
+    });
+    $('.updateBtnStatut').on('click', function () {
+        id_s = $(this).attr('data-id');
+        $('#updateS').val(id_s);
+    });
 });

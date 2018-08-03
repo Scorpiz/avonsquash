@@ -10,17 +10,30 @@ if(isset($_POST['submitAddFormule'])){
     echo "Formule ajoutée";
 }
 
+if(isset($_POST['submitUpdateFormule'])){
+    $titreF = htmlspecialchars($_POST['titreF_update']);
+    $sousTitreF = htmlspecialchars($_POST['sousTitreF_update']);
+    $id_f = htmlspecialchars($_POST["data-id-F"]);
+
+    updateFormule($titreF, $sousTitreF, $id_f);
+    echo "Formule éditée";
+}
+
 if(isset($_POST['submitAddStatut'])){
     $libelle_s = htmlspecialchars($_POST['libelleS']);
     $menu = htmlspecialchars($_POST['inMenu']);
-    if($menu = "Non"){
-        $menu = 0;
-    }else{
-        $menu = 1;
-    }
 
     addStatus($libelle_s, $menu);
     echo "Statut ajouté";
+}
+
+if(isset($_POST['submitUpdateStatut'])){
+    $libelle_s = htmlspecialchars($_POST['libelleS_update']);
+    $menu = htmlspecialchars($_POST['inMenu_update']);
+    $id_s = htmlspecialchars($_POST["data-id-S"]);
+
+    updateStatus($libelle_s, $menu, $id_s);
+    echo "Statut édité";
 }
 
 if(isset($_POST['submitAddTarif'])){
@@ -67,7 +80,7 @@ if(isset($_POST['submitAddTarif'])){
                                     <td> Aucun titre </td>
                                 <?php } ?>
                                 <td><?= $ChangFormule['sous_titre']?></td>
-                                <td><button type="submit" class="btn btn-success" name="">Modifier</button></td>
+                                <td><button type="submit" class="btn btn-success updateBtnFormule" data-toggle="modal" data-target="#modalEditFormule" data-id="<?= $ChangFormule['id_f'] ?>">Modifier</button></td>
                                 <td><a href="delete.php?type=form&id=<?= $ChangFormule['id_f'] ?>" class="btn btn-danger">Supprimer</a></td>
                             </tr> <?php } ?>
                             </tbody>
@@ -106,7 +119,7 @@ if(isset($_POST['submitAddTarif'])){
                                 <?php }else{ ?>
                                     <td>Oui</td>
                                 <?php } ?>
-                                <td><button type="submit" class="btn btn-success" name="">Modifier</button></td>
+                                <td><button type="submit" class="btn btn-success updateBtnStatut" data-toggle="modal" data-target="#modalEditStatut" data-id="<?= $ChangStatut['id_s'] ?>">Modifier</button></td>
                                 <td><a href="delete.php?type=stat&id=<?= $ChangStatut['id_s'] ?>" class="btn btn-danger">Supprimer</a></td>
                             </tr> <?php } ?>
                             </tbody>
@@ -160,13 +173,13 @@ if(isset($_POST['submitAddTarif'])){
         </div>
     </div>
 
-    <!-- Modal ajout FORMULE -->
+    <!-- Modal AJOUT FORMULE -->
     <div class="modal fade" id="modalAddFormule" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">Modifier les informations</h4>
+                    <h4 class="modal-title" id="myModalLabel">Ajout d'une formule</h4>
                 </div>
                 <div class="modal-body">
                     <form class="form-horizontal" method="post" action="#">
@@ -191,10 +204,10 @@ if(isset($_POST['submitAddTarif'])){
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-    <!-- /Modal ajout FORMULE -->
+    <!-- /Modal AJOUT FORMULE -->
 
-    <!-- Modal ajout STATUT -->
-    <div class="modal fade" id="modalAddStatut" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <!--    Modal EDIT FORMULE-->
+    <div class="modal fade" id="modalEditFormule" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -204,17 +217,52 @@ if(isset($_POST['submitAddTarif'])){
                 <div class="modal-body">
                     <form class="form-horizontal" method="post" action="#">
                         <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">Titre</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="Titre" name="titreF_update">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">Sous titre</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="Sous titre" name="sousTitreF_update">
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="data-id-F" id="updateF" value="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-primary" name="submitUpdateFormule">Enregistrer</button>
+                </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!-- /Modal EDIT FORMULE -->
+
+    <!-- Modal AJOUT STATUT -->
+    <div class="modal fade" id="modalAddStatut" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Ajout d'un statut</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" method="post" action="#">
+                        <div class="form-group">
                             <label for="" class="col-sm-2 control-label">Libelle statut</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" placeholder="libelle" name="libelleS">
+                                <input type="text" class="form-control" placeholder="Libelle" name="libelleS">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-2 control-label" for="select-inMenu">Menu</label>
                             <div class="col-sm-10">
                                 <select class="form-control" id="select-inMenu" name="inMenu">
-                                    <option>Non</option>
-                                    <option>Oui</option>
+                                    <option value="0">Non</option>
+                                    <option value="1">Oui</option>
                                 </select>
                             </div>
                         </div>
@@ -227,15 +275,53 @@ if(isset($_POST['submitAddTarif'])){
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-    <!-- /Modal ajout STATUT -->
+    <!-- /Modal AJOUT STATUT -->
 
-    <!-- Modal ajout TARIF -->
+    <!-- Modal EDIT STATUT -->
+    <div class="modal fade" id="modalEditStatut" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Modifier le statut</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" method="post" action="#">
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">Libelle statut</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="Libelle" name="libelleS_update">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="select-inMenu">Menu</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="select-inMenu" name="inMenu_update">
+                                    <option value="0">Non</option>
+                                    <option value="1">Oui</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="data-id-S" id="updateS" value="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-primary" name="submitUpdateStatut">Enregistrer</button>
+                </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!-- /Modal EDIT STATUT -->
+
+    <!-- Modal AJOUT TARIF -->
     <div class="modal fade" id="modalAddTarif" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">Modifier les informations</h4>
+                    <h4 class="modal-title" id="myModalLabel">Ajouter un tarif</h4>
                 </div>
                 <div class="modal-body">
                     <form class="form-horizontal" method="post" action="#">
@@ -263,7 +349,7 @@ if(isset($_POST['submitAddTarif'])){
                                 <select class="form-control" id="select-1" name="Tarifformule">
                                     <?php foreach($ChangFormules as $keyFormule => $ChangFormule){
                                         if (!empty($ChangFormule['titre'])){ ?>
-                                            <option><?= $ChangFormule['titre']; ?></option>
+                                            <option value="<?=$ChangFormule['id_f'] ?>"><?= $ChangFormule['titre']; ?></option>
                                         <?php }
                                     } ?>
                                 </select>
@@ -274,7 +360,7 @@ if(isset($_POST['submitAddTarif'])){
                             <div class="col-sm-10">
                                 <select class="form-control" id="select-2" name="Tarifstatut">
                                     <?php foreach($ChangStatuts as $keyStatut => $ChangStatut){ ?>
-                                        <option><?= $ChangStatut['libelle_s']; ?></option>
+                                        <option value="<?= $ChangStatut['id_s'] ?>"><?= $ChangStatut['libelle_s']; ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
@@ -288,8 +374,69 @@ if(isset($_POST['submitAddTarif'])){
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-    <!-- /Modal ajout TARIF -->
+    <!-- /Modal AJOUT TARIF -->
 
+    <!-- Modal EDIT TARIF -->
+    <div class="modal fade" id="modalEditTarif" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Modifier le tarif</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" method="post" action="#">
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">Libelle Tarif</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="Libelle" name="Tariflibelle_update">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">Commentaire</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="Commentaire" name="Tarifcommentaire_update">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Prix</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="Prix" name="Tarifprix_update">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="select-1">Formule</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="select-1" name="Tarifformule_update">
+                                    <?php foreach($ChangFormules as $keyFormule => $ChangFormule){
+                                        if (!empty($ChangFormule['titre'])){ ?>
+                                            <option value="<?=$ChangFormule['id_f'] ?>"><?= $ChangFormule['titre']; ?></option>
+                                        <?php }
+                                    } ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="select-2">Statut</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="select-2" name="Tarifstatut_update">
+                                    <?php foreach($ChangStatuts as $keyStatut => $ChangStatut){ ?>
+                                        <option value="<?= $ChangStatut['id_s'] ?>"><?= $ChangStatut['libelle_s']; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
 
+                        <input type="hidden" name="data-id-T" id="updateT" value="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-primary" name="submitUpdateTarif">Enregistrer</button>
+                </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!-- /Modal EDIT TARIF -->
 
 <?php    include "includes/footer.php"; ?>

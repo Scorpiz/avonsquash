@@ -63,7 +63,7 @@ function addHoraire($jour, $heure){
 
 function updateHoraire($jour, $heure, $id_h){
     global $bdd;
-    $req = $bdd->prepare("UPDATE horaire SET jour = ?, heure = ? WHERE id_h='".$id_h."'");
+    $req = $bdd->prepare("UPDATE horaire SET jour = ?, heure = ? WHERE id_h=".$id_h);
     $req->execute(array(
         $jour,
         $heure
@@ -118,9 +118,9 @@ function deletePartenaire($id_part) {
     $req = $bdd->prepare("DELETE FROM partenaire WHERE id_part=".$id_part);
     $req -> execute();
 }
-function updatePartenaire($part, $logo, $com, $lien){
+function updatePartenaire($part, $logo, $com, $lien, $id_part){
     global $bdd;
-    $req = $bdd->prepare("UPDATE partenaire SET partenaire = ?, logo = ?, commentaire = ?, lien = ? WHERE id_part=".id_part);
+    $req = $bdd->prepare("UPDATE partenaire SET partenaire = ?, logo = ?, commentaire = ?, lien = ? WHERE id_part=".$id_part);
     $req->execute(array(
         $part,
         $logo,
@@ -142,7 +142,7 @@ function deleteAdmin($id_admin) {
     $req -> execute();
     $req->execute();
 }
-function updateAdmin($id_u, $login, $email,$mdp){
+function updateAdmin($id_u, $login, $email, $mdp){
     global $bdd;
     $req = $bdd->prepare ("UPDATE users SET login = ?, email = ?, mdp = ? WHERE id_u=".$id_u);
     $req->execute(array(
@@ -166,6 +166,15 @@ function deleteFormule($id_f) {
     $req->execute();
 }
 
+function updateFormule($titreF, $sousTitreF, $id_f){
+    global $bdd;
+    $req = $bdd->prepare ("UPDATE formule SET titre = ?, sous_titre = ? WHERE id_f=".$id_f);
+    $req->execute(array(
+        $titreF,
+        $sousTitreF
+    ));
+}
+
 function addStatus($libelle_s, $menu){
     global $bdd;
     $req = $bdd->prepare("INSERT INTO statut(libelle_s, in_menu) VALUES('".$libelle_s."', '".$menu."')");
@@ -177,6 +186,15 @@ function deleteStatus($id_s) {
     global $bdd;
     $req = $bdd->prepare("DELETE FROM statut WHERE id_s=".$id_s);
     $req->execute();
+}
+
+function updateStatus($libelle_s, $menu, $id_s){
+    global $bdd;
+    $req = $bdd->prepare ("UPDATE statut SET libelle_s = ?, in_menu = ? WHERE id_s=".$id_s);
+    $req->execute(array(
+        $libelle_s,
+        $menu
+    ));
 }
 
 function addTarif($Tariflibelle, $Tarifcommentaire, $Tarifprix, $Tarifstatut, $Tarifformule){
@@ -192,6 +210,17 @@ function deleteTarif($id_ta) {
     $req->execute();
 }
 
+function updateTarif($libelle_ta, $commentaire, $prix, $id_s, $id_f, $id_ta){
+    global $bdd;
+    $req = $bdd->prepare ("UPDATE tarif SET libelle_ta = ?, commentaire = ?, prix = ?, id_s = ?, id_f = ? WHERE id_ta=".$id_ta);
+    $req->execute(array(
+        $libelle_ta,
+        $commentaire,
+        $prix,
+        $id_s,
+        $id_f
+    ));
+}
 ?>
 
 
