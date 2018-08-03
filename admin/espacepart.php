@@ -27,9 +27,9 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                             $com = htmlspecialchars($_POST['comup']);
                             $lien = htmlspecialchars($_POST['lienup']);
                             $logo = htmlspecialchars($_POST['logoup']);
-                            var_dump($id_part, $part, $com, $lien, $logo);
+                            var_dump($part, $logo, $com, $lien, $id_part);
                             echo "Modification effectuer";
-                            updatePartenaire($part, $logo, $com, $lien);
+                            updatePartenaire($part, $logo, $com, $lien, $id_part);
                         }
                         ?>
                         <div class="panel-options">
@@ -44,7 +44,6 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                                 <th>Logo</th>
                                 <th>Commentaire</th>
                                 <th>Lien site</th>
-                                <th>Afficher ou masquer</th>
                                 <th>Supprimer</th>
                                 <th>Modifier</th>
                             </tr>
@@ -54,10 +53,9 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                             foreach ($part as $key=>$par) { ?>
                                 <tr>
                                     <td><?= $par['partenaire'] ?></td>
-                                    <td></td>
+                                    <td><?= $par['logo'] ?></td>
                                     <td><?= $par['commentaire'] ?></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td><?= $par['lien'] ?></td>
                                     <td><a href="delete.php?type=delpar&id=<?= $par['id_part'] ?> "type="submit" class="btn btn-danger" name="">Supprimer</a></td>
                                     <td><button type="submit" class="btn btn-success updateBtnPart" data-toggle="modal" data-target="#modalEditPart" data-id="<?= $par['id_part'] ?>">Modifier</button></td>
                                 </tr>
@@ -87,9 +85,21 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">Logo</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="Url web de l'image" name="logo">
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="" class="col-sm-2 control-label">Commentaire</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">Lien</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="lien">
                             </div>
                         </div>
                 </div>
@@ -120,11 +130,8 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                             </div>
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Logo</label>
-                                <div class="col-md-10">
-                                    <input type="file" class="btn btn-default" id="" name="logoup">
-                                    <p class="help-block">
-                                        Logo du partenaire
-                                    </p>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control"  placeholder=" Url web de l'image" id="" name="logoup">
                                 </div>
                             </div>
 

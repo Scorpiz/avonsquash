@@ -46,13 +46,14 @@ include "includes/functions.php";
         <div class="row">
 
             <!-- Section-header -->
+                        <?php $infos = viewAgenceInfos(); ?>
             <div class="section-header text-center">
-                <h2 class="title">Notre histoire</h2>
+                <h2 class="title"> <?= $infos['titre_histoire']?></h2>
             </div>
             <div class="col-sm-12">
                 <div style="text-align:center;">
-                        <img src="assets/img/background/cat3.jpg" alt="..." style="display:inline-block;padding-right:150px;">
-                        <p style="display:inline-block;">blabla</p>
+                        <img src="assets/img/background/back1.jpg" alt="..." style="display:inline-block;padding-right:280px;max-width:1200px;">
+                        <p style="display:inline-block;"><?= $infos['description_histoire'] ?></p>
                 </div>
             </div>
 

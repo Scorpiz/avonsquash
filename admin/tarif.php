@@ -45,7 +45,16 @@ if(isset($_POST['submitAddTarif'])){
 
     addTarif($Tariflibelle, $Tarifcommentaire, $Tarifprix, $Tarifstatut, $Tarifformule);
     echo "Tarif ajouté";
-
+}
+if(isset($_POST['submitUpdateTarif'])){
+    $libelle_ta = htmlspecialchars($_POST['Tariflibelle_update']);
+    $commentaire = htmlspecialchars($_POST['Tarifcommentaire_update']);
+    $prix = htmlspecialchars($_POST['Tarifprix_update']);
+    $id_s = htmlspecialchars($_POST['Tarifstatut_update']);
+    $id_f = htmlspecialchars($_POST['Tarifformule_update']);
+    $id_ta = htmlspecialchars($_POST["data-id-T"]);
+    updateTarif($libelle_ta, $commentaire, $prix, $id_s, $id_f, $id_ta);
+    echo "Tarif modifié";
 }
 ?>
     <div class="col-md-10">
@@ -162,7 +171,7 @@ if(isset($_POST['submitAddTarif'])){
                             <td><?= $ChangTarif['commentaire']?></td>
                             <td><?= $ChangTarif['prix']?></td>
                             <form method="post" action="">
-                                <td><button class="btn btn-success" data-toggle="modal" data-target="#modalUpdateTarif">Modifier</button></td>
+                                <td><button class="btn btn-success updateBtnTarif" data-toggle="modal" data-target="#modalEditTarif" data-id="<?= $ChangTarif['id_ta'] ?>">Modifier</button></td>
                                 <td><a href="delete.php?type=tar&id=<?= $ChangTarif['id_ta'] ?>" class="btn btn-danger">Supprimer</a></td>
                             </form>
                         </tr> <?php } ?>

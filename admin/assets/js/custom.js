@@ -36,4 +36,8 @@ $(document).ready(function(){
         id_s = $(this).attr('data-id');
         $('#updateS').val(id_s);
     });
+       $('.updateBtnTarif').on('click', function () {
+        id_ta = $(this).attr('data-id');
+        $('#updateT').val(id_ta);
+    }); 
 });

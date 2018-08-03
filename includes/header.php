@@ -20,9 +20,11 @@ catch(Exception $e)
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Avon Squash – le plus ancien et le plus australien des clubs de sport de France - Avon Seine-et-marne 77">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <title>Avon Squash</title>
+    
 
     <!-- Google font -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet">

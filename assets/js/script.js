@@ -3,9 +3,10 @@ $(document).ready(function(){
     var header = $('.bg-img');
 
     var backgrounds = new Array(
-        'url(assets/img/background/cat1.jpg)'
-        , 'url(assets/img/background/cat2.jpg)'
-        , 'url(assets/img/background/cat3.jpg)'
+        'url(assets/img/background/back1.jpg)'
+        , 'url(assets/img/background/back2.jpg)'
+        , 'url(assets/img/background/back3.jpg)'
+        , 'url(assets/img/background/back4.jpg)'
     );
 
     var current = 0;

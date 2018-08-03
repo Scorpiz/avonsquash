@@ -38,7 +38,7 @@ include "includes/functions.php";
                 <li><a href="index.php">Accueil</a></li>
                 <li><a href="#blog">News</a></li>
                 <li><a href="#pricing">Tarifs</a></li>
-                <li><a href="espacepro.php">Espace pro</a></li>
+<!--                <li><a href="espacepro.php">Espace pro</a></li> -->
                 <li><a href="https://resa-avonsquash.deciplus.pro/">Réservez</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -58,7 +58,7 @@ include "includes/functions.php";
                     <div class="home-content">
                         <h1 class="main-color">SQUASH & MORE</h1>
                         <p class="white-text">Le plus australien des clubs de squash français.</p><br>
-                        <h4><a href="apropos.php" class="btn btn-warning">Notre histoire</a></h4> <br>
+                        <h4><a href="apropos.php" class="btn btn-warning">Notre histoire</a></h4> <br> 
                         <h3 class="main-color">Horaires d'ouverture</h3>
                         <?php $horaires = viewhoraire();
                         foreach ($horaires as $key=>$horaire) {
@@ -295,8 +295,8 @@ include "includes/functions.php";
             foreach ($part as $key=>$par) { ?>
             <div class="col-sm-4">
                 <div class="partenaire">
-                    <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/e/ea/Mcdonalds_France_2009_logo.svg/853px-Mcdonalds_France_2009_logo.svg.png">
-                    <h3><?= $par['partenaire']?></h3>
+                    <img src="<?= $par['logo']?>">
+                    <a href="<?= $par['lien'] ?>" class="btn btn-warning"><h3><?= $par['partenaire']?></h3></a>
                     <p><?= $par['commentaire']?></p>
                     <br>
                 </div>

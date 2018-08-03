@@ -145,6 +145,7 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
         </div>
     </div>
 
+<!--
     <div class="row">
         <div class="col-md-12 panel-warning">
             <div class="content-box-header panel-heading">
@@ -160,6 +161,7 @@ if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
             </div>
         </div>
     </div>
+-->
     </div>
     <!-- Modal info agence -->
     <div class="modal fade" id="ModalInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
