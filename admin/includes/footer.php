@@ -4,7 +4,7 @@
     <div class="container">
 
         <div class="copy text-center">
-            Copyright 2014 <a href='#'>Website</a>
+            Copyright 2018 <a href='http://avonsquash.com/'>Avonsquash</a>
         </div>
 
     </div>

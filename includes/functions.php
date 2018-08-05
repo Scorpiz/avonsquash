@@ -7,9 +7,9 @@ function viewStatus(){
     return $req->fetchAll();
 }
 
-function viewFormule($is_active){
+function viewFormule($is_active, $can_be_del){
     global $bdd;
-    $req = $bdd->prepare("SELECT * FROM formule WHERE is_active ='".$is_active."' ORDER BY can_be_deleted");
+    $req = $bdd->prepare("SELECT * FROM formule WHERE is_active ='".$is_active."' AND can_be_deleted ='".$can_be_del."' ORDER BY can_be_deleted");
     $req->execute();
     return $req->fetchAll();
 }

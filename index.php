@@ -2,7 +2,7 @@
 include "includes/header.php";
 include "includes/functions.php";
 ?>
-    <body>
+<body>
 <!-- Header -->
 <header id="home">
     <!-- Background Image -->
@@ -38,9 +38,10 @@ include "includes/functions.php";
                 <li><a href="index.php">Accueil</a></li>
                 <li><a href="#blog">News</a></li>
                 <li><a href="#pricing">Tarifs</a></li>
-<!--                <li><a href="espacepro.php">Espace pro</a></li> -->
-                <li><a href="https://resa-avonsquash.deciplus.pro/">Réservez</a></li>
+                <!--                <li><a href="espacepro.php">Espace pro</a></li> -->
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="#partenaire">Partenaires</a></li>
+                <li><a href="https://resa-avonsquash.deciplus.pro/">Réservez</a></li>
             </ul>
             <!-- /Main navigation -->
 
@@ -58,7 +59,7 @@ include "includes/functions.php";
                     <div class="home-content">
                         <h1 class="main-color">SQUASH & MORE</h1>
                         <p class="white-text">Le plus australien des clubs de squash français.</p><br>
-                        <h4><a href="apropos.php" class="btn btn-warning">Notre histoire</a></h4> <br> 
+                        <h4><a href="apropos.php" class="btn btn-warning">Notre histoire</a></h4> <br>
                         <h3 class="main-color">Horaires d'ouverture</h3>
                         <?php $horaires = viewhoraire();
                         foreach ($horaires as $key=>$horaire) {
@@ -165,10 +166,39 @@ include "includes/functions.php";
             </div>
 
             <!--tarif-->
-            <?php $formules0 = viewFormule(1);
+            <?php $formules0 = viewFormule(1, 0);
             foreach ($formules0 as $key=>$formule0) {
                 $tarifs0 = viewTarif($formule0['id_f']);
-             ?>
+                ?>
+                <div class="parent-pricing-enfant col-sm-12">
+                    <div class="pricing-enfant">
+                        <div class="price-head">
+                            <span class="price-title"><?= $formule0['titre'] ?></span>
+                            <p class="subtitle"><?= $formule0['sous_titre'] ?></p>
+                        </div>
+                        <?php foreach ($tarifs0 as $keyTarif=>$tarif0) {
+                            $transformIdStatus = transformIdStatus($formule0['id_f'], $tarif0['id_s']);
+                            ?>
+                            <ul class="price-content statut-<?= $transformIdStatus ?>">
+
+                                <li>
+                                    <p class="description"><?= $tarif0['libelle_ta'] ?></p>
+                                    <?php if(!empty($tarif0['prix'])){ ?>
+                                        <p class="price-amount"><?= $tarif0['prix'] ?> €</p>
+                                    <?php } ?>
+                                    <p class="comment"><?= $tarif0['commentaire'] ?></p>
+                                </li>
+                            </ul>
+                        <?php } ?>
+                    </div>
+                </div>
+            <?php } ?>
+
+            <!--tarif-->
+            <?php $formules0 = viewFormule(1, 1);
+            foreach ($formules0 as $key=>$formule0) {
+                $tarifs0 = viewTarif($formule0['id_f']);
+                ?>
                 <div class="parent-pricing-enfant col-sm-6">
                     <div class="pricing-enfant">
                         <div class="price-head">
@@ -177,11 +207,11 @@ include "includes/functions.php";
                         </div>
                         <?php foreach ($tarifs0 as $keyTarif=>$tarif0) {
                             $transformIdStatus = transformIdStatus($formule0['id_f'], $tarif0['id_s']);
-                         ?>
+                            ?>
                             <ul class="price-content statut-<?= $transformIdStatus ?>">
-                                <?php if($keyTarif != 0 && $tarifs0[$keyTarif - 1]['libelle_s'] == $tarif0['libelle_s']){ 
-                                
-                                 } else if($tarif0['libelle_s'] !== 'Aucun statut'){ ?>
+                                <?php if($keyTarif != 0 && $tarifs0[$keyTarif - 1]['libelle_s'] == $tarif0['libelle_s']){
+
+                                } else if($tarif0['libelle_s'] !== 'Aucun statut'){ ?>
                                     <p style="color: white;"> <?= $tarif0['libelle_s'] ?></p>
                                 <?php } ?>
                                 <li>
@@ -192,7 +222,7 @@ include "includes/functions.php";
                                     <p class="comment"><?= $tarif0['commentaire'] ?></p>
                                 </li>
                             </ul>
-                       <?php } ?>
+                        <?php } ?>
                     </div>
                 </div>
             <?php } ?>
@@ -275,7 +305,7 @@ include "includes/functions.php";
 
 </div>
 <!-- /Contact -->
-        
+
 <!--Espace partenaire -->
 <div id="partenaire" class="section md-padding bg-grey">
 
@@ -290,57 +320,61 @@ include "includes/functions.php";
                 <h2 class="title">Nos partenaires</h2>
             </div>
             <!-- /Section-header -->
-<!-- Listing partenaire -->
+
+            <!-- Listing partenaire -->
             <?php $part = viewPartenaire();
             foreach ($part as $key=>$par) { ?>
-            <div class="col-sm-4">
-                <div class="partenaire">
-                    <img src="<?= $par['logo']?>">
-                    <a href="<?= $par['lien'] ?>" class="btn btn-warning"><h3><?= $par['partenaire']?></h3></a>
-                    <p><?= $par['commentaire']?></p>
-                    <br>
+                <div class="col-sm-4">
+                    <div class="partenaire">
+                        <a href="<?= $par['lien'] ?>">
+                            <img src="<?= $par['logo']?>">
+                            <h3><?= $par['partenaire']?></h3>
+                            <p><?= $par['commentaire']?></p>
+                        </a>
+                        <br>
+                    </div>
                 </div>
-            </div><?php } ?>
-<!-- /listing partenaire -->
+            <?php } ?>
+            <!-- /listing partenaire -->
+
         </div>
-<!-- Row -->
+        <!-- Row -->
     </div>
-<!-- Container -->
+    <!-- Container -->
 </div>
 <!--/Espace partenaire-->
 <?php
 include "includes/footer.php";
 ?>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

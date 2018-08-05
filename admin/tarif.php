@@ -42,7 +42,7 @@ if(isset($_POST['submitAddTarif'])){
     $Tarifprix = htmlspecialchars($_POST['Tarifprix']);
     $Tarifstatut = htmlspecialchars($_POST['Tarifstatut']);
     $Tarifformule = htmlspecialchars($_POST['Tarifformule']);
-
+var_dump($Tariflibelle, $Tarifcommentaire, $Tarifprix, $Tarifstatut, $Tarifformule);
     addTarif($Tariflibelle, $Tarifcommentaire, $Tarifprix, $Tarifstatut, $Tarifformule);
     echo "Tarif ajouté";
 }
@@ -89,8 +89,10 @@ if(isset($_POST['submitUpdateTarif'])){
                                     <td> Aucun titre </td>
                                 <?php } ?>
                                 <td><?= $ChangFormule['sous_titre']?></td>
-                                <td><button type="submit" class="btn btn-success updateBtnFormule" data-toggle="modal" data-target="#modalEditFormule" data-id="<?= $ChangFormule['id_f'] ?>">Modifier</button></td>
-                                <td><a href="delete.php?type=form&id=<?= $ChangFormule['id_f'] ?>" class="btn btn-danger">Supprimer</a></td>
+                                <td><button type="submit" class="btn btn-primary updateBtnFormule" data-toggle="modal" data-target="#modalEditFormule" data-id="<?= $ChangFormule['id_f'] ?>"><i class="far fa-edit"></i> Modifier</button></td>
+                                <?php if($ChangFormule['can_be_deleted'] != 0) {?>
+                                    <td><a href="delete.php?type=form&id=<?= $ChangFormule['id_f'] ?>" class="btn btn-danger"><i class="fas fa-times"></i> Supprimer</a></td>
+                                <?php } ?>
                             </tr> <?php } ?>
                             </tbody>
                         </table>
@@ -128,8 +130,8 @@ if(isset($_POST['submitUpdateTarif'])){
                                 <?php }else{ ?>
                                     <td>Oui</td>
                                 <?php } ?>
-                                <td><button type="submit" class="btn btn-success updateBtnStatut" data-toggle="modal" data-target="#modalEditStatut" data-id="<?= $ChangStatut['id_s'] ?>">Modifier</button></td>
-                                <td><a href="delete.php?type=stat&id=<?= $ChangStatut['id_s'] ?>" class="btn btn-danger">Supprimer</a></td>
+                                <td><button type="submit" class="btn btn-primary updateBtnStatut" data-toggle="modal" data-target="#modalEditStatut" data-id="<?= $ChangStatut['id_s'] ?>"><i class="far fa-edit"></i> Modifier</button></td>
+                                <td><a href="delete.php?type=stat&id=<?= $ChangStatut['id_s'] ?>" class="btn btn-danger"><i class="fas fa-times"></i> Supprimer</a></td>
                             </tr> <?php } ?>
                             </tbody>
                         </table>
@@ -171,8 +173,8 @@ if(isset($_POST['submitUpdateTarif'])){
                             <td><?= $ChangTarif['commentaire']?></td>
                             <td><?= $ChangTarif['prix']?></td>
                             <form method="post" action="">
-                                <td><button class="btn btn-success updateBtnTarif" data-toggle="modal" data-target="#modalEditTarif" data-id="<?= $ChangTarif['id_ta'] ?>">Modifier</button></td>
-                                <td><a href="delete.php?type=tar&id=<?= $ChangTarif['id_ta'] ?>" class="btn btn-danger">Supprimer</a></td>
+                                <td><button class="btn btn-primary updateBtnTarif" data-toggle="modal" data-target="#modalEditTarif" data-id="<?= $ChangTarif['id_ta'] ?>"><i class="far fa-edit"></i> Modifier</button></td>
+                                <td><a href="delete.php?type=tar&id=<?= $ChangTarif['id_ta'] ?>" class="btn btn-danger"><i class="fas fa-times"></i> Supprimer</a></td>
                             </form>
                         </tr> <?php } ?>
                         </tbody>
